@@ -1,6 +1,6 @@
 <?php
 
-namespace NormanHuth\HellofreshScraper;
+namespace NormanHuth\HellofreshScraper\Http;
 
 use DOMDocument;
 use Illuminate\Support\Facades\Cache;
@@ -14,7 +14,7 @@ class Client
     /**
      * The HelloFresh base url.
      */
-    protected string $baseUrl;
+    protected string $baseUrl = 'https://gw.hellofresh.com';
 
     /**
      * The HelloFresh API path.
@@ -38,17 +38,19 @@ class Client
 
     protected int $requestTry = 0;
 
-    public function __construct(string $baseUrl, string $isoCountryCode, string $locale, int $take = 10)
+    public function __construct(string $isoCountryCode, string $isoLocale, int $take = 10, string $baseUrl = null)
     {
         $this->country = $isoCountryCode;
-        $this->locale = $locale;
+        $this->locale = $isoLocale;
         $this->take = $take;
 
         if (function_exists('set_time_limit')) {
             set_time_limit(0);
         }
 
-        $this->baseUrl = $baseUrl;
+        if ($baseUrl) {
+            $this->baseUrl = $baseUrl;
+        }
     }
 
     /**

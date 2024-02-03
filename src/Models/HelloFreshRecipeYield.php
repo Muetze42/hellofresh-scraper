@@ -4,6 +4,8 @@ namespace NormanHuth\HellofreshScraper\Models;
 
 class HelloFreshRecipeYield
 {
+    use HasRelationTrait;
+
     /**
      * The data array.
      */
@@ -24,9 +26,6 @@ class HelloFreshRecipeYield
      */
     public function yieldIngredients(): array
     {
-        return array_map(
-            fn (array $allergen) => new HelloFreshYieldIngredient($allergen),
-            $this->data['ingredients']
-        );
+        return $this->hasMany(HelloFreshYieldIngredient::class, 'ingredients');
     }
 }

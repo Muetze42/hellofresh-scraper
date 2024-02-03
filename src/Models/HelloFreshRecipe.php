@@ -7,6 +7,7 @@ use Illuminate\Support\Arr;
 class HelloFreshRecipe extends AbstractModel
 {
     use HasIdTrait;
+    use HasRelationTrait;
 
     /**
      * @return array{
@@ -68,10 +69,7 @@ class HelloFreshRecipe extends AbstractModel
      */
     public function allergens(): array
     {
-        return array_map(
-            fn (array $allergen) => new HelloFreshAllergen($allergen),
-            $this->data['allergens']
-        );
+        return $this->hasMany(HelloFreshAllergen::class, 'allergens');
     }
 
     /**
@@ -79,10 +77,7 @@ class HelloFreshRecipe extends AbstractModel
      */
     public function ingredients(): array
     {
-        return array_map(
-            fn (array $ingredient) => new HelloFreshIngredient($ingredient),
-            $this->data['ingredients']
-        );
+        return $this->hasMany(HelloFreshIngredient::class, 'ingredients');
     }
 
     /**
@@ -90,25 +85,22 @@ class HelloFreshRecipe extends AbstractModel
      */
     public function utensils(): array
     {
-        return array_map(
-            fn (array $ingredient) => new HelloFreshUtensil($ingredient),
-            $this->data['utensils']
-        );
+        return $this->hasMany(HelloFreshUtensil::class, 'utensils');
     }
 
     public function category(): HelloFreshCategory
     {
-        return new HelloFreshCategory($this->data['category']);
+        return $this->hasOne(HelloFreshCategory::class, 'category');
     }
 
     public function prepTime(): HelloFreshTime
     {
-        return new HelloFreshTime($this->data['prepTime']);
+        return $this->hasOne(HelloFreshTime::class, 'prepTime');
     }
 
     public function totalTime(): HelloFreshTime
     {
-        return new HelloFreshTime($this->data['totalTime']);
+        return $this->hasOne(HelloFreshTime::class, 'totalTime');
     }
 
     /**
@@ -116,10 +108,7 @@ class HelloFreshRecipe extends AbstractModel
      */
     public function cuisines(): array
     {
-        return array_map(
-            fn (array $cuisine) => new HelloFreshCuisine($cuisine),
-            $this->data['cuisines']
-        );
+        return $this->hasMany(HelloFreshCuisine::class, 'cuisines');
     }
 
     /**
@@ -127,10 +116,7 @@ class HelloFreshRecipe extends AbstractModel
      */
     public function nutrition(): array
     {
-        return array_map(
-            fn (array $cuisine) => new HelloFreshNutrition($cuisine),
-            $this->data['nutrition']
-        );
+        return $this->hasMany(HelloFreshNutrition::class, 'nutrition');
     }
 
     public function label(): ?HelloFreshLabel
@@ -147,10 +133,7 @@ class HelloFreshRecipe extends AbstractModel
      */
     public function steps(): array
     {
-        return array_map(
-            fn (array $step) => new HelloFreshStep($step),
-            $this->data['steps']
-        );
+        return $this->hasMany(HelloFreshStep::class, 'steps');
     }
 
     /**
@@ -158,9 +141,6 @@ class HelloFreshRecipe extends AbstractModel
      */
     public function tags(): array
     {
-        return array_map(
-            fn (array $cuisine) => new HelloFreshTag($cuisine),
-            $this->data['tags']
-        );
+        return $this->hasMany(HelloFreshTag::class, 'tags');
     }
 }

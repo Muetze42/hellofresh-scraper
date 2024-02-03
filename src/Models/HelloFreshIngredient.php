@@ -7,6 +7,7 @@ use Illuminate\Support\Arr;
 class HelloFreshIngredient extends AbstractModel
 {
     use HasIdTrait;
+    use HasRelationTrait;
 
     /**
      * @return array{
@@ -36,6 +37,6 @@ class HelloFreshIngredient extends AbstractModel
 
     public function family(): HelloFreshFamily
     {
-        return new HelloFreshFamily($this->data['family']);
+        return $this->hasOne(HelloFreshFamily::class, 'family');
     }
 }

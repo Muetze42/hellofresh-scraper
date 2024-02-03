@@ -5,9 +5,9 @@ namespace NormanHuth\HellofreshScraper;
 use DOMDocument;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 use NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException;
 use NormanHuth\HellofreshScraper\Http\Responses\RecipesIndexResponse;
-use NormanHuth\Helpers\Str;
 
 class Client
 {
@@ -168,7 +168,7 @@ class Client
     /**
      * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
      */
-    public function recipes()
+    public function recipes(): RecipesIndexResponse
     {
         return new RecipesIndexResponse($this->request(''));
     }

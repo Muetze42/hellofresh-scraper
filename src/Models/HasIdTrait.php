@@ -6,8 +6,6 @@ trait HasIdTrait
 {
     /**
      * Get the value of the model's primary key.
-     *
-     * @return string
      */
     public function getKey(): string
     {

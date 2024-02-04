@@ -48,6 +48,16 @@ abstract class AbstractIndexResponse
         return count($this->items) && $next < $this->total ? $next : null;
     }
 
+    public function take(): int
+    {
+        return $this->take;
+    }
+
+    public function skip(): int
+    {
+        return $this->skip;
+    }
+
     /**
      * Display a listing of the resource.
      */

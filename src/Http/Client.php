@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException;
 use NormanHuth\HellofreshScraper\Http\Responses\AllergensIndexResponse;
-use NormanHuth\HellofreshScraper\Http\Responses\RecipesIndexResponse;
 
 class Client
 {
@@ -65,7 +64,7 @@ class Client
     {
         return $this->request($url, [
             'take' => $this->take,
-            'skip' => $skip
+            'skip' => $skip,
         ]);
     }
 

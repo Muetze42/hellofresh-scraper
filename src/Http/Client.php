@@ -3,6 +3,7 @@
 namespace NormanHuth\HellofreshScraper\Http;
 
 use DOMDocument;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
@@ -138,9 +139,41 @@ class Client
      *
      * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
      */
-    protected function extractToken(): string
+    public function extractToken(): string
     {
-        $response = Http::get($this->baseUrl);
+        return $this->getSsrPayload(
+            $this->baseUrl,
+            'serverAuth.access_token'
+        );
+    }
+
+    /**
+     * Return an array of recipe IDs for the determined week.
+     *
+     * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
+     * @return array<array-key, string>
+     */
+    public function weeklyMenu(int $addWeeks = 0): array
+    {
+        $current = now()->startOfWeek()->addWeeks($addWeeks);
+        $url = sprintf(
+            '%s/menus/%d-W%d',
+            $this->baseUrl,
+            $current->format('Y'),
+            $current->format('W')
+        );
+
+        return Arr::pluck($this->getSsrPayload($url, 'courses'), 'recipe.id');
+    }
+
+    /**
+     * Extract SSR Payload from specific URL.
+     *
+     * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
+     */
+    protected function getSsrPayload(string $url, string $key): mixed
+    {
+        $response = Http::get($url);
         $dom = new DOMDocument();
         libxml_use_internal_errors(true);
         $dom->loadHTML($response->body());
@@ -158,10 +191,10 @@ class Client
 
         $data = json_decode($data, true);
 
-        $data = data_get($data, 'props.pageProps.ssrPayload.serverAuth.access_token');
+        $data = data_get($data, 'props.pageProps.ssrPayload.' . $key);
 
         if (!$data) {
-            throw new HellofreshScraperException('Could not determine HelloFresh token.');
+            throw new HellofreshScraperException('Could not determine __NEXT_DATA__ key.');
         }
 
         return $data;

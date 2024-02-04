@@ -12,6 +12,7 @@
         "php": "^8.2",
         "ext-dom": "*",
         "ext-libxml": "*",
+        "illuminate/http": "^10.43",
         "illuminate/support": "^10.43"
     },
     "require-dev": {

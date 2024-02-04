@@ -35,7 +35,7 @@ class HelloFreshIngredient extends AbstractModel
         return $this->data['allergens'];
     }
 
-    public function family(): HelloFreshFamily
+    public function family(): ?HelloFreshFamily
     {
         return $this->hasOne(HelloFreshFamily::class, 'family');
     }

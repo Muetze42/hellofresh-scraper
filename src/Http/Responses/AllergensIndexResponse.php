@@ -9,7 +9,7 @@ class AllergensIndexResponse extends AbstractIndexResponse
     /**
      * Display a listing of the resource.
      *
-     * @return array<\NormanHuth\HellofreshScraper\Models\HelloFreshRecipe>
+     * @return array<\NormanHuth\HellofreshScraper\Models\HelloFreshAllergen>
      */
     public function items(): array
     {

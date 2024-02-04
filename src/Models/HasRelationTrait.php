@@ -9,7 +9,12 @@ trait HasRelationTrait
      */
     protected function hasOne(mixed $model, string $key)
     {
+        if (!$this->data[$key]) {
+            return null;
+        }
+
         return new $model($this->data[$key]);
+
     }
 
     /**

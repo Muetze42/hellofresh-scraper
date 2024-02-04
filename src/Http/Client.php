@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException;
 use NormanHuth\HellofreshScraper\Http\Responses\AllergensIndexResponse;
+use NormanHuth\HellofreshScraper\Http\Responses\CuisinesIndexResponse;
+use NormanHuth\HellofreshScraper\Http\Responses\IngredientsIndexResponse;
 
 class Client
 {
@@ -76,7 +78,7 @@ class Client
     protected function request(string $url, array $query = []): array
     {
         $query['country'] = $this->country;
-        $query['locale'] = $this->locale;
+        $query['locale'] = $this->locale . '-' . $this->country;
 
         $this->requestTry++;
 
@@ -214,8 +216,24 @@ class Client
     /**
      * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
      */
-    public function allergens(): AllergensIndexResponse
+    public function allergens(int $skip = 0): AllergensIndexResponse
     {
-        return new AllergensIndexResponse($this->indexRequest('allergens'));
+        return new AllergensIndexResponse($this->indexRequest('allergens', $skip));
+    }
+
+    /**
+     * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
+     */
+    public function cuisines(int $skip = 0): CuisinesIndexResponse
+    {
+        return new CuisinesIndexResponse($this->indexRequest('allergens', $skip));
+    }
+
+    /**
+     * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
+     */
+    public function ingredients(int $skip = 0): IngredientsIndexResponse
+    {
+        return new IngredientsIndexResponse($this->indexRequest('ingredients', $skip));
     }
 }

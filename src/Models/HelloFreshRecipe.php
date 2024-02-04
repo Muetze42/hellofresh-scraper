@@ -88,11 +88,6 @@ class HelloFreshRecipe extends AbstractModel
         return $this->hasMany(HelloFreshUtensil::class, 'utensils');
     }
 
-    public function category(): HelloFreshCategory
-    {
-        return $this->hasOne(HelloFreshCategory::class, 'category');
-    }
-
     public function prepTime(): HelloFreshTime
     {
         return $this->hasOne(HelloFreshTime::class, 'prepTime');
@@ -121,11 +116,12 @@ class HelloFreshRecipe extends AbstractModel
 
     public function label(): ?HelloFreshLabel
     {
-        if ($label = $this->data['label']) {
-            return new HelloFreshLabel($label);
-        }
+        return $this->hasOne(HelloFreshLabel::class, 'label');
+    }
 
-        return null;
+    public function category(): ?HelloFreshCategory
+    {
+        return $this->hasOne(HelloFreshCategory::class, 'category');
     }
 
     /**

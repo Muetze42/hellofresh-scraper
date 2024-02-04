@@ -17,4 +17,12 @@ class HelloFreshLabel extends AbstractModel
     {
         return $this->data;
     }
+
+    /**
+     * Get the value of the model's primary key.
+     */
+    public function getKey(): string
+    {
+        return $this->data['handle'];
+    }
 }

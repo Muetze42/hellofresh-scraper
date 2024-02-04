@@ -11,6 +11,7 @@ use NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException;
 use NormanHuth\HellofreshScraper\Http\Responses\AllergensIndexResponse;
 use NormanHuth\HellofreshScraper\Http\Responses\CuisinesIndexResponse;
 use NormanHuth\HellofreshScraper\Http\Responses\IngredientsIndexResponse;
+use NormanHuth\HellofreshScraper\Http\Responses\RecipesIndexResponse;
 
 class Client
 {
@@ -251,5 +252,13 @@ class Client
     public function ingredients(int $skip = 0): IngredientsIndexResponse
     {
         return new IngredientsIndexResponse($this->indexRequest('ingredients', $skip));
+    }
+
+    /**
+     * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
+     */
+    public function recipes(int $skip = 0): RecipesIndexResponse
+    {
+        return new RecipesIndexResponse($this->indexRequest('recipes', $skip));
     }
 }

@@ -14,7 +14,6 @@ trait HasRelationTrait
         }
 
         return new $model($this->data[$key]);
-
     }
 
     /**

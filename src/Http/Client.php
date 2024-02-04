@@ -39,6 +39,8 @@ class Client
      */
     protected int $take;
 
+    protected bool $throwException = true;
+
     protected int $requestTry = 0;
 
     /**
@@ -164,9 +166,8 @@ class Client
      * Return an array of recipe IDs for the determined week.
      *
      * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
-     * @return array<array-key, string>
      */
-    public function weeklyMenu(int $addWeeks = 0): array
+    public function weeklyMenu(int $addWeeks = 0): ?array
     {
         $current = now()->startOfWeek()->addWeeks($addWeeks);
         $url = sprintf(
@@ -176,7 +177,11 @@ class Client
             $current->format('W')
         );
 
-        return Arr::pluck($this->getSsrPayload($url, 'courses'), 'recipe.id');
+        if ($payload = $this->getSsrPayload($url, 'courses')) {
+            return Arr::pluck($payload, 'recipe.id');
+        }
+
+        return null;
     }
 
     /**
@@ -207,10 +212,21 @@ class Client
         $data = data_get($data, 'props.pageProps.ssrPayload.' . $key);
 
         if (!$data) {
+            if (!$this->throwException) {
+                return null;
+            }
+
             throw new HellofreshScraperException('Could not determine __NEXT_DATA__ key.');
         }
 
         return $data;
+    }
+
+    public function withoutException(): static
+    {
+        $this->throwException = false;
+
+        return $this;
     }
 
     /**

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException;
+use NormanHuth\HellofreshScraper\Http\Responses\AllergensIndexResponse;
 use NormanHuth\HellofreshScraper\Http\Responses\RecipesIndexResponse;
 
 class Client
@@ -39,6 +40,9 @@ class Client
 
     protected int $requestTry = 0;
 
+    /**
+     * Create a new HelleFresh API client instance.
+     */
     public function __construct(string $isoCountryCode, string $isoLocale, int $take = 10, string $baseUrl = null)
     {
         $this->country = $isoCountryCode;
@@ -55,17 +59,25 @@ class Client
     }
 
     /**
+     * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
+     */
+    protected function indexRequest(string $url, int $skip = 0): array
+    {
+        return $this->request($url, [
+            'take' => $this->take,
+            'skip' => $skip
+        ]);
+    }
+
+    /**
      * Issue a GET request to the HelloFresh API.
      *
      * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
      */
-    public function request(string $url, array $query = []): array
+    protected function request(string $url, array $query = []): array
     {
-        // Debug
-        return json_decode(
-            file_get_contents(storage_path('app/recipes.json')),
-            true
-        );
+        $query['country'] = $this->country;
+        $query['locale'] = $this->locale;
 
         $this->requestTry++;
 
@@ -139,7 +151,7 @@ class Client
      *
      * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
      */
-    public function extractToken(): string
+    protected function extractToken(): string
     {
         return $this->getSsrPayload(
             $this->baseUrl,
@@ -203,8 +215,8 @@ class Client
     /**
      * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
      */
-    public function recipes(): RecipesIndexResponse
+    public function allergens(): AllergensIndexResponse
     {
-        return new RecipesIndexResponse($this->request(''));
+        return new AllergensIndexResponse($this->indexRequest('allergens'));
     }
 }

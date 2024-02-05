@@ -166,7 +166,6 @@ class Client
     /**
      * Return an array of recipe IDs for the determined week.
      *
-     * @param int  $addWeeks
      *
      * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
      * @return null|array{

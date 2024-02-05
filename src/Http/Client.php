@@ -166,20 +166,35 @@ class Client
     /**
      * Return an array of recipe IDs for the determined week.
      *
+     * @param int  $addWeeks
+     *
      * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
+     * @return null|array{
+     *      ids: array,
+     *      year: int,
+     *      weak: int,
+     *      current: \Illuminate\Support\Carbon,
+     * }
      */
     public function menu(int $addWeeks = 0): ?array
     {
         $current = now()->startOfWeek()->addWeeks($addWeeks);
+        $year = $current->format('Y');
+        $week = $current->format('W');
         $url = sprintf(
             '%s/menus/%d-W%d',
             $this->baseUrl,
-            $current->format('Y'),
-            $current->format('W')
+            $year,
+            $week
         );
 
         if ($payload = $this->getSsrPayload($url, 'courses')) {
-            return Arr::pluck($payload, 'recipe.id');
+            return [
+                'ids' => Arr::pluck($payload, 'recipe.id'),
+                'year' => $year,
+                'weak' => $week,
+                'current' => $current,
+            ];
         }
 
         return null;

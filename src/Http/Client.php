@@ -168,7 +168,7 @@ class Client
      *
      * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
      */
-    public function weeklyMenu(int $addWeeks = 0): ?array
+    public function menu(int $addWeeks = 0): ?array
     {
         $current = now()->startOfWeek()->addWeeks($addWeeks);
         $url = sprintf(

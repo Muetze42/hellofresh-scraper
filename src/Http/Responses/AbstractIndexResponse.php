@@ -45,7 +45,7 @@ abstract class AbstractIndexResponse
     {
         $next = $this->skip + $this->take;
 
-        return count($this->items) && $next < $this->total ? $next : null;
+        return $next < $this->total ? $next : null;
     }
 
     public function take(): int

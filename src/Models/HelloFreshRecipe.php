@@ -55,11 +55,11 @@ class HelloFreshRecipe extends AbstractModel
             'cuisines',
             'ingredients',
             'label',
-            'nutrition',
-            'prepTime',
-            'steps',
+            //'nutrition',
+            //'prepTime',
+            //'steps',
             'tags',
-            'totalTime',
+            //'totalTime',
             'utensils',
         ]);
     }

@@ -66,7 +66,7 @@ class HelloFreshRecipe extends AbstractModel
 
     public function active(): bool
     {
-        return (bool) $this->data['active'];
+        return $this->data['active'];
     }
 
     /**

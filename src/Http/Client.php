@@ -86,7 +86,7 @@ class Client
      *
      * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
      */
-    protected function request(string $url, array $query = []): array
+    protected function request(string $url, array $query = []): ?array
     {
         $query['country'] = $this->country;
         $query['locale'] = $this->locale . '-' . $this->country;
@@ -97,6 +97,9 @@ class Client
             ->get($this->baseUrl . $this->apiPath . $url, $query);
 
         if ($response->failed()) {
+            if ($response->status() == 404) {
+                return null;
+            }
             if ($response->status() == 401 && $this->requestTry < 3) {
                 $this->refreshToken();
                 sleep(1);
@@ -110,7 +113,7 @@ class Client
 
                     return $this->request($url, $query);
                 case 2:
-                    sleep(30);
+                    sleep(10);
 
                     return $this->request($url, $query);
                 default:
@@ -287,33 +290,41 @@ class Client
     /**
      * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
      */
-    public function allergen(string $id): HelloFreshAllergen
+    public function allergen(string $id): ?HelloFreshAllergen
     {
-        return new HelloFreshAllergen($this->request('allergens/' . $id));
+        $response = $this->request('allergens/' . $id);
+
+        return $response ? new HelloFreshAllergen($response) : null;
     }
 
     /**
      * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
      */
-    public function cuisine(string $id): HelloFreshCuisine
+    public function cuisine(string $id): ?HelloFreshCuisine
     {
-        return new HelloFreshCuisine($this->request('allergens/' . $id));
+        $response = $this->request('allergens/' . $id);
+
+        return $response ? new HelloFreshCuisine($response) : null;
     }
 
     /**
      * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
      */
-    public function ingredient(string $id): HelloFreshIngredient
+    public function ingredient(string $id): ?HelloFreshIngredient
     {
-        return new HelloFreshIngredient($this->request('ingredients' . $id));
+        $response = $this->request('ingredients' . $id);
+
+        return $response ? new HelloFreshIngredient($response) : null;
     }
 
     /**
      * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
      */
-    public function recipe(string $id): HelloFreshRecipe
+    public function recipe(string $id): ?HelloFreshRecipe
     {
-        return new HelloFreshRecipe($this->request('recipes/' . $id));
+        $response = $this->request('recipes/' . $id);
+
+        return $response ? new HelloFreshRecipe($response) : null;
     }
 
     /**

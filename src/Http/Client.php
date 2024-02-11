@@ -12,6 +12,10 @@ use NormanHuth\HellofreshScraper\Http\Responses\AllergensIndexResponse;
 use NormanHuth\HellofreshScraper\Http\Responses\CuisinesIndexResponse;
 use NormanHuth\HellofreshScraper\Http\Responses\IngredientsIndexResponse;
 use NormanHuth\HellofreshScraper\Http\Responses\RecipesIndexResponse;
+use NormanHuth\HellofreshScraper\Models\HelloFreshAllergen;
+use NormanHuth\HellofreshScraper\Models\HelloFreshCuisine;
+use NormanHuth\HellofreshScraper\Models\HelloFreshIngredient;
+use NormanHuth\HellofreshScraper\Models\HelloFreshRecipe;
 
 class Client
 {
@@ -274,5 +278,37 @@ class Client
     public function recipes(int $skip = 0): RecipesIndexResponse
     {
         return new RecipesIndexResponse($this->indexRequest('recipes', $skip));
+    }
+
+    /**
+     * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
+     */
+    public function allergen(string $id): HelloFreshAllergen
+    {
+        return new HelloFreshAllergen($this->request('allergens/' . $id));
+    }
+
+    /**
+     * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
+     */
+    public function cuisine(string $id): HelloFreshCuisine
+    {
+        return new HelloFreshCuisine($this->request('allergens/' . $id));
+    }
+
+    /**
+     * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
+     */
+    public function ingredient(string $id): HelloFreshIngredient
+    {
+        return new HelloFreshIngredient($this->request('ingredients' . $id));
+    }
+
+    /**
+     * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
+     */
+    public function recipe(string $id): HelloFreshRecipe
+    {
+        return new HelloFreshRecipe($this->request('recipes/' . $id));
     }
 }

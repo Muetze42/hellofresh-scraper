@@ -69,10 +69,14 @@ class Client
     /**
      * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
      */
-    protected function indexRequest(string $url, int $skip = 0): array
+    protected function indexRequest(string $url, int $skip = 0, int $take = null): array
     {
+        if (!$take) {
+            $take = $this->take;
+        }
+
         return $this->request($url, [
-            'take' => $this->take,
+            'take' => $take,
             'skip' => $skip,
         ]);
     }
@@ -310,5 +314,17 @@ class Client
     public function recipe(string $id): HelloFreshRecipe
     {
         return new HelloFreshRecipe($this->request('recipes/' . $id));
+    }
+
+    /**
+     * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
+     */
+    public function recipeRecommendations(string $id, int $take = 10, int $skip = 0): RecipesIndexResponse
+    {
+        return new RecipesIndexResponse($this->indexRequest(
+            url: 'recipes/' . $id . '/recommendations',
+            skip: $skip,
+            take: $take
+        ));
     }
 }

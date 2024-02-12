@@ -69,6 +69,11 @@ class HelloFreshRecipe extends AbstractModel
         return $this->data['active'];
     }
 
+    public function isAddon(): bool
+    {
+        return $this->data['isAddon'];
+    }
+
     /**
      * @return array<\NormanHuth\HellofreshScraper\Models\HelloFreshAllergen>
      */

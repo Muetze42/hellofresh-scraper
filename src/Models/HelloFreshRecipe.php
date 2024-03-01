@@ -74,6 +74,11 @@ class HelloFreshRecipe extends AbstractModel
         return $this->data['isAddon'];
     }
 
+    public function imagePath(): ?string
+    {
+        return $this->data['imagePath'];
+    }
+
     /**
      * @return array<\NormanHuth\HellofreshScraper\Models\HelloFreshAllergen>
      */

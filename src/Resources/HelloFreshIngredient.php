@@ -1,10 +1,12 @@
 <?php
 
-namespace NormanHuth\HellofreshScraper\Models;
+namespace NormanHuth\HellofreshScraper\Resources;
 
 use Illuminate\Support\Arr;
+use NormanHuth\HellofreshScraper\Traits\HasIdTrait;
+use NormanHuth\HellofreshScraper\Traits\HasRelationTrait;
 
-class HelloFreshIngredient extends AbstractModel
+class HelloFreshIngredient extends AbstractResource
 {
     use HasIdTrait;
     use HasRelationTrait;

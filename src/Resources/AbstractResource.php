@@ -1,8 +1,8 @@
 <?php
 
-namespace NormanHuth\HellofreshScraper\Models;
+namespace NormanHuth\HellofreshScraper\Resources;
 
-abstract class AbstractModel
+abstract class AbstractResource
 {
     /**
      * The data array.

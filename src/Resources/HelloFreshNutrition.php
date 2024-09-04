@@ -1,8 +1,8 @@
 <?php
 
-namespace NormanHuth\HellofreshScraper\Models;
+namespace NormanHuth\HellofreshScraper\Resources;
 
-class HelloFreshNutrition extends AbstractModel
+class HelloFreshNutrition extends AbstractResource
 {
     /**
      * @return array{

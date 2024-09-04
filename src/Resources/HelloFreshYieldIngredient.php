@@ -1,8 +1,8 @@
 <?php
 
-namespace NormanHuth\HellofreshScraper\Models;
+namespace NormanHuth\HellofreshScraper\Resources;
 
-class HelloFreshYieldIngredient extends AbstractModel
+class HelloFreshYieldIngredient extends AbstractResource
 {
     /**
      * @return array{

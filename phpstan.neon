@@ -1,0 +1,12 @@
+includes:
+  - vendor/larastan/larastan/extension.neon
+
+parameters:
+  pro:
+    dnsServers:
+      - '8.8.8.8'
+  paths:
+    - src/
+  reportUnmatchedIgnoredErrors: false
+
+  level: 9

@@ -1,10 +1,12 @@
 <?php
 
-namespace NormanHuth\HellofreshScraper\Models;
+namespace NormanHuth\HellofreshScraper\Resources;
 
 use Illuminate\Support\Arr;
+use NormanHuth\HellofreshScraper\Traits\HasIdTrait;
+use NormanHuth\HellofreshScraper\Traits\HasRelationTrait;
 
-class HelloFreshRecipe extends AbstractModel
+class HelloFreshRecipe extends AbstractResource
 {
     use HasIdTrait;
     use HasRelationTrait;
@@ -80,7 +82,7 @@ class HelloFreshRecipe extends AbstractModel
     }
 
     /**
-     * @return array<\NormanHuth\HellofreshScraper\Models\HelloFreshAllergen>
+     * @return array<\NormanHuth\HellofreshScraper\Resources\HelloFreshAllergen>
      */
     public function allergens(): array
     {
@@ -88,7 +90,7 @@ class HelloFreshRecipe extends AbstractModel
     }
 
     /**
-     * @return array<\NormanHuth\HellofreshScraper\Models\HelloFreshIngredient>
+     * @return array<\NormanHuth\HellofreshScraper\Resources\HelloFreshIngredient>
      */
     public function ingredients(): array
     {
@@ -96,7 +98,7 @@ class HelloFreshRecipe extends AbstractModel
     }
 
     /**
-     * @return array<\NormanHuth\HellofreshScraper\Models\HelloFreshUtensil>
+     * @return array<\NormanHuth\HellofreshScraper\Resources\HelloFreshUtensil>
      */
     public function utensils(): array
     {
@@ -114,7 +116,7 @@ class HelloFreshRecipe extends AbstractModel
     }
 
     /**
-     * @return array<\NormanHuth\HellofreshScraper\Models\HelloFreshCuisine>
+     * @return array<\NormanHuth\HellofreshScraper\Resources\HelloFreshCuisine>
      */
     public function cuisines(): array
     {
@@ -122,7 +124,7 @@ class HelloFreshRecipe extends AbstractModel
     }
 
     /**
-     * @return array<\NormanHuth\HellofreshScraper\Models\HelloFreshNutrition>
+     * @return array<\NormanHuth\HellofreshScraper\Resources\HelloFreshNutrition>
      */
     public function nutrition(): array
     {
@@ -140,7 +142,7 @@ class HelloFreshRecipe extends AbstractModel
     }
 
     /**
-     * @return array<\NormanHuth\HellofreshScraper\Models\HelloFreshStep>
+     * @return array<\NormanHuth\HellofreshScraper\Resources\HelloFreshStep>
      */
     public function steps(): array
     {
@@ -148,7 +150,7 @@ class HelloFreshRecipe extends AbstractModel
     }
 
     /**
-     * @return array<\NormanHuth\HellofreshScraper\Models\HelloFreshTag>
+     * @return array<\NormanHuth\HellofreshScraper\Resources\HelloFreshTag>
      */
     public function tags(): array
     {

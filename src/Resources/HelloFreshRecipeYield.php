@@ -1,6 +1,8 @@
 <?php
 
-namespace NormanHuth\HellofreshScraper\Models;
+namespace NormanHuth\HellofreshScraper\Resources;
+
+use NormanHuth\HellofreshScraper\Traits\HasRelationTrait;
 
 class HelloFreshRecipeYield
 {
@@ -22,7 +24,7 @@ class HelloFreshRecipeYield
     }
 
     /**
-     * @return array<\NormanHuth\HellofreshScraper\Models\HelloFreshYieldIngredient>
+     * @return array<\NormanHuth\HellofreshScraper\Resources\HelloFreshYieldIngredient>
      */
     public function yieldIngredients(): array
     {

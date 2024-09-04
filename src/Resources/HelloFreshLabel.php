@@ -1,8 +1,8 @@
 <?php
 
-namespace NormanHuth\HellofreshScraper\Models;
+namespace NormanHuth\HellofreshScraper\Resources;
 
-class HelloFreshLabel extends AbstractModel
+class HelloFreshLabel extends AbstractResource
 {
     /**
      * @return array{
@@ -19,7 +19,7 @@ class HelloFreshLabel extends AbstractModel
     }
 
     /**
-     * Get the value of the model's primary key.
+     * Get the value of the resource primary key.
      */
     public function getKey(): string
     {

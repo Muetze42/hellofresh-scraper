@@ -2,14 +2,14 @@
 
 namespace NormanHuth\HellofreshScraper\Http\Responses;
 
-use NormanHuth\HellofreshScraper\Models\HelloFreshAllergen;
+use NormanHuth\HellofreshScraper\Resources\HelloFreshAllergen;
 
 class AllergensIndexResponse extends AbstractIndexResponse
 {
     /**
      * Display a listing of the resource.
      *
-     * @return array<\NormanHuth\HellofreshScraper\Models\HelloFreshAllergen>
+     * @return array<\NormanHuth\HellofreshScraper\Resources\HelloFreshAllergen>
      */
     public function items(): array
     {

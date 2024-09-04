@@ -12,10 +12,10 @@ use NormanHuth\HellofreshScraper\Http\Responses\AllergensIndexResponse;
 use NormanHuth\HellofreshScraper\Http\Responses\CuisinesIndexResponse;
 use NormanHuth\HellofreshScraper\Http\Responses\IngredientsIndexResponse;
 use NormanHuth\HellofreshScraper\Http\Responses\RecipesIndexResponse;
-use NormanHuth\HellofreshScraper\Models\HelloFreshAllergen;
-use NormanHuth\HellofreshScraper\Models\HelloFreshCuisine;
-use NormanHuth\HellofreshScraper\Models\HelloFreshIngredient;
-use NormanHuth\HellofreshScraper\Models\HelloFreshRecipe;
+use NormanHuth\HellofreshScraper\Resources\HelloFreshAllergen;
+use NormanHuth\HellofreshScraper\Resources\HelloFreshCuisine;
+use NormanHuth\HellofreshScraper\Resources\HelloFreshIngredient;
+use NormanHuth\HellofreshScraper\Resources\HelloFreshRecipe;
 
 class Client
 {
@@ -178,13 +178,14 @@ class Client
      * Return an array of recipe IDs for the determined week.
      *
      *
-     * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
      * @return null|array{
      *      ids: array,
      *      year: int,
      *      weak: int,
      *      current: \Illuminate\Support\Carbon,
      * }
+     *
+     * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
      */
     public function menu(int $addWeeks = 0): ?array
     {

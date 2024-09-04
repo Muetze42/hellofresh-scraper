@@ -1,8 +1,10 @@
 <?php
 
-namespace NormanHuth\HellofreshScraper\Models;
+namespace NormanHuth\HellofreshScraper\Resources;
 
-class HelloFreshFamily extends AbstractModel
+use NormanHuth\HellofreshScraper\Traits\HasIdTrait;
+
+class HelloFreshFamily extends AbstractResource
 {
     use HasIdTrait;
 

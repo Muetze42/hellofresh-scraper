@@ -2,14 +2,14 @@
 
 namespace NormanHuth\HellofreshScraper\Http\Responses;
 
-use NormanHuth\HellofreshScraper\Models\HelloFreshRecipe;
+use NormanHuth\HellofreshScraper\Resources\HelloFreshRecipe;
 
 class RecipesIndexResponse extends AbstractIndexResponse
 {
     /**
      * Display a listing of the resource.
      *
-     * @return array<\NormanHuth\HellofreshScraper\Models\HelloFreshRecipe>
+     * @return array<\NormanHuth\HellofreshScraper\Resources\HelloFreshRecipe>
      */
     public function items(): array
     {

@@ -1,11 +1,11 @@
 <?php
 
-namespace NormanHuth\HellofreshScraper\Models;
+namespace NormanHuth\HellofreshScraper\Traits;
 
 trait HasIdTrait
 {
     /**
-     * Get the value of the model's primary key.
+     * Get the value of the resource primary key.
      */
     public function getKey(): string
     {

@@ -12,6 +12,8 @@ class HelloFreshRecipe extends AbstractResource
     use HasRelationTrait;
 
     /**
+     * Get the data array.
+     *
      * @return array{
      *      active: bool,
      *      averageRating: int,

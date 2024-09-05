@@ -5,6 +5,21 @@ namespace NormanHuth\HellofreshScraper\Resources;
 class HelloFreshLabel extends AbstractResource
 {
     /**
+     * The data array.
+     *
+     * @var array{
+     *     text: string,
+     *     handle: string,
+     *     foregroundColor: string,
+     *     backgroundColor: string,
+     *     displayLabel: false,
+     * }
+     */
+    protected array $data;
+
+    /**
+     * Get the data array.
+     *
      * @return array{
      *      text: string,
      *      handle: string,

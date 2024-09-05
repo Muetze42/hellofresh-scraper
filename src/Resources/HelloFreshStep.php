@@ -2,36 +2,59 @@
 
 namespace NormanHuth\HellofreshScraper\Resources;
 
-class HelloFreshStep
+class HelloFreshStep extends AbstractResource
 {
     /**
      * The data array.
+     *
+     * @var array{
+     *     index: int,
+     *     instructions: string,
+     *     instructionsHTML: string,
+     *     instructionsMarkdown: string,
+     *     ingredients: array<int, string>,
+     *     utensils: array<int, string>,
+     *     timers: array<int, string>,
+     *     images: array{array-key, array{
+     *         link: string,
+     *         path: string,
+     *         caption: string,
+     *     }},
+     *     videos: array{array-key, array{
+     *         link: string,
+     *         path: string,
+     *         caption: string,
+     *     }},
+     * }
      */
     protected array $data;
 
-    public function __construct(array $data)
+    /**
+     * Get the data array.
+     *
+     * @return array{
+     *      index: int,
+     *      instructions: string,
+     *      instructionsHTML: string,
+     *      instructionsMarkdown: string,
+     *      ingredients: array<int, string>,
+     *      utensils: array<int, string>,
+     *      timers: array<int, string>,
+     *      images: array{array-key, array{
+     *          link: string,
+     *          path: string,
+     *          caption: string,
+     *      }},
+     *      videos: array{array-key, array{
+     *          link: string,
+     *          path: string,
+     *          caption: string,
+     *      }},
+     *  }
+     */
+    public function data(): array
     {
-        $this->data = $data;
-    }
-
-    public function index(): int
-    {
-        return $this->data['index'];
-    }
-
-    public function instructions(): string
-    {
-        return $this->data['instructions'];
-    }
-
-    public function ingredientsIds(): array
-    {
-        return $this->data['instructions'];
-    }
-
-    public function utensilsIds(): array
-    {
-        return $this->data['instructions'];
+        return $this->data;
     }
 
     // timers

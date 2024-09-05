@@ -2,25 +2,44 @@
 
 namespace NormanHuth\HellofreshScraper\Resources;
 
+use Carbon\CarbonInterval;
+
 class HelloFreshTime
 {
     /**
-     * The data string.
+     * The time string.
      */
-    protected ?string $data;
+    protected ?string $time;
 
-    public function __construct(?string $data)
+    /**
+     * Create a new HelloFreshTime instance.
+     */
+    public function __construct(?string $time)
     {
-        $this->data = $data;
+        $this->time = $time;
     }
 
-    public function toString(): ?string
+    /**
+     * Get the time string.
+     *
+     * @return string|null
+     */
+    public function time(): ?string
     {
-        return $this->data;
+        return $this->time;
     }
 
-    public function toInt(): ?int
+    /**
+     * Get the number of minutes equivalent to the time string.
+     *
+     * @return int|null
+     */
+    public function minutes(): ?int
     {
-        return $this->data ? (int) preg_replace('/\D/', '', $this->data) : null;
+        if (is_null($this->time)) {
+            return null;
+        }
+
+        return CarbonInterval::make($this->time)->totalMinutes;
     }
 }

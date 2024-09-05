@@ -9,7 +9,7 @@ trait HasRelationTrait
      */
     protected function hasOne(mixed $resource, string $key)
     {
-        if (!$this->data[$key]) {
+        if (! $this->data[$key]) {
             return null;
         }
 

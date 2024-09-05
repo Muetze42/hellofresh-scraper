@@ -12,6 +12,8 @@ class HelloFreshIngredient extends AbstractResource
     use HasRelationTrait;
 
     /**
+     * Get the data array.
+     *
      * @return array{
      *      id: string,
      *      uuid: string,

@@ -1,13 +1,15 @@
 <?php
 
-namespace NormanHuth\HellofreshScraper\Http\Responses;
+namespace NormanHuth\HellofreshScraper\Resources\Collections;
 
-abstract class AbstractIndexResponse
+abstract class AbstractCollection
 {
     /**
-     * The items array;.
+     * The resources array.
+     *
+     * @var array<int, mixed>
      */
-    protected array $items;
+    protected array $resources;
 
     /**
      * The take integer.
@@ -29,9 +31,18 @@ abstract class AbstractIndexResponse
      */
     protected int $total;
 
+    /**
+     * @param array{
+     *     items: array<int, array<string, mixed>>,
+     *     take: int,
+     *     skip: int,
+     *     count: int,
+     *     total: int,
+     * }  $data
+     */
     public function __construct(array $data)
     {
-        $this->items = $data['items'];
+        $this->resources = $data['items'];
         $this->take = $data['take'];
         $this->skip = $data['skip'];
         $this->count = $data['count'];
@@ -60,6 +71,8 @@ abstract class AbstractIndexResponse
 
     /**
      * Display a listing of the resource.
+     *
+     * @return array<int, object>
      */
     abstract public function items(): array;
 }

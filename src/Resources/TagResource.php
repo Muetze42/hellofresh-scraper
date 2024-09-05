@@ -4,7 +4,7 @@ namespace NormanHuth\HellofreshScraper\Resources;
 
 use NormanHuth\HellofreshScraper\Traits\HasIdTrait;
 
-class HelloFreshCuisine extends AbstractResource
+class TagResource extends AbstractResource
 {
     use HasIdTrait;
 
@@ -12,12 +12,14 @@ class HelloFreshCuisine extends AbstractResource
      * The data array.
      *
      * @var array{
-     *     id: string,
-     *     type: string,
-     *     name: string,
-     *     slug: string,
-     *     iconLink: string
-     * }
+     *       id: string,
+     *       type: string,
+     *       name: string,
+     *       slug: string,
+     *       colorHandle: string,
+     *       preferences: array,
+     *       displayLabel: bool,
+     *  }
      */
     protected array $data;
 
@@ -29,7 +31,9 @@ class HelloFreshCuisine extends AbstractResource
      *      type: string,
      *      name: string,
      *      slug: string,
-     *      iconLink: string,
+     *      colorHandle: string,
+     *      preferences: array,
+     *      displayLabel: bool,
      * }
      */
     public function data(): array

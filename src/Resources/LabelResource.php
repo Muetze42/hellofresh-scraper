@@ -2,7 +2,7 @@
 
 namespace NormanHuth\HellofreshScraper\Resources;
 
-class HelloFreshLabel extends AbstractResource
+class LabelResource extends AbstractResource
 {
     /**
      * The data array.

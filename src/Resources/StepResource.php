@@ -2,7 +2,7 @@
 
 namespace NormanHuth\HellofreshScraper\Resources;
 
-class HelloFreshStep extends AbstractResource
+class StepResource extends AbstractResource
 {
     /**
      * The data array.

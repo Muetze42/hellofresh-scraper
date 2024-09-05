@@ -2,7 +2,7 @@
 
 namespace NormanHuth\HellofreshScraper\Resources;
 
-class HelloFreshNutrition extends AbstractResource
+class NutritionResource extends AbstractResource
 {
     /**
      * The data array.

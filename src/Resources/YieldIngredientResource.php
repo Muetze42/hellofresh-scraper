@@ -2,20 +2,16 @@
 
 namespace NormanHuth\HellofreshScraper\Resources;
 
-use NormanHuth\HellofreshScraper\Traits\HasIdTrait;
-
-class HelloFreshUtensil extends AbstractResource
+class YieldIngredientResource extends AbstractResource
 {
-    use HasIdTrait;
-
     /**
      * The data array.
      *
      * @var array{
-     *     id: string,
-     *     type: string,
-     *     name: string
-     * }
+     *       id: string,
+     *       amount: int,
+     *       unit: string,
+     *  }
      */
     protected array $data;
 
@@ -23,9 +19,9 @@ class HelloFreshUtensil extends AbstractResource
      * Get the data array.
      *
      * @return array{
-     *     id: string,
-     *     type: string,
-     *     name: string
+     *      id: string,
+     *      amount: int,
+     *      unit: string,
      * }
      */
     public function data(): array

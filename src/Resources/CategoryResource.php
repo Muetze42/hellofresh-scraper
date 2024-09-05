@@ -4,7 +4,7 @@ namespace NormanHuth\HellofreshScraper\Resources;
 
 use NormanHuth\HellofreshScraper\Traits\HasIdTrait;
 
-class HelloFreshFamily extends AbstractResource
+class CategoryResource extends AbstractResource
 {
     use HasIdTrait;
 
@@ -13,13 +13,9 @@ class HelloFreshFamily extends AbstractResource
      *
      * @var array{
      *     id: string,
-     *     uuid: string,
      *     name: string,
-     *     slug: string,
      *     type: string,
-     *     priority: int,
-     *     iconLink: string|null,
-     *     iconPath: string|null,
+     *     slug: string,
      * }
      */
     protected array $data;
@@ -29,13 +25,9 @@ class HelloFreshFamily extends AbstractResource
      *
      * @return array{
      *      id: string,
-     *      uuid: string,
      *      name: string,
-     *      slug: string,
      *      type: string,
-     *      priority: int,
-     *      iconLink: string|null,
-     *      iconPath: string|null,
+     *      slug: string,
      * }
      */
     public function data(): array

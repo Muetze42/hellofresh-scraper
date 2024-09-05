@@ -1,10 +1,10 @@
 <?php
 
-namespace NormanHuth\HellofreshScraper\Resources;
+namespace NormanHuth\HellofreshScraper;
 
 use Carbon\CarbonInterval;
 
-class HelloFreshTime
+class Time
 {
     /**
      * The time string.
@@ -32,14 +32,14 @@ class HelloFreshTime
     /**
      * Get the number of minutes equivalent to the time string.
      *
-     * @return int|null
+     * @return float|null
      */
-    public function minutes(): ?int
+    public function minutes(): ?float
     {
         if (is_null($this->time)) {
             return null;
         }
 
-        return CarbonInterval::make($this->time)->totalMinutes;
+        return CarbonInterval::make($this->time)?->totalMinutes;
     }
 }

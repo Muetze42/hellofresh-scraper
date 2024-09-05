@@ -4,7 +4,7 @@ namespace NormanHuth\HellofreshScraper\Resources;
 
 use NormanHuth\HellofreshScraper\Traits\HasRelationTrait;
 
-class HelloFreshRecipeYield extends AbstractResource
+class RecipeYieldResource extends AbstractResource
 {
     use HasRelationTrait;
 
@@ -25,11 +25,11 @@ class HelloFreshRecipeYield extends AbstractResource
     }
 
     /**
-     * @return array<\NormanHuth\HellofreshScraper\Resources\HelloFreshYieldIngredient>
+     * @return array<\NormanHuth\HellofreshScraper\Resources\YieldIngredientResource>
      */
     public function yieldIngredients(): array
     {
-        return $this->hasMany(HelloFreshYieldIngredient::class, 'ingredients');
+        return $this->hasMany(YieldIngredientResource::class, 'ingredients');
     }
 
     /**

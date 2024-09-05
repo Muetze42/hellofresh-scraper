@@ -4,7 +4,7 @@ namespace NormanHuth\HellofreshScraper\Resources;
 
 use NormanHuth\HellofreshScraper\Traits\HasIdTrait;
 
-class HelloFreshAllergen extends AbstractResource
+class AllergenResource extends AbstractResource
 {
     use HasIdTrait;
 

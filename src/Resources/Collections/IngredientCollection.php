@@ -10,7 +10,7 @@ class IngredientCollection extends AbstractCollection
     /**
      * Display a listing of the resource.
      *
-     * @return array<int, \NormanHuth\HellofreshScraper\Resources\IngredientResource>
+     * @return list<\NormanHuth\HellofreshScraper\Resources\IngredientResource>
      */
     public function items(): array
     {

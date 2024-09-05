@@ -250,7 +250,7 @@ class RecipeResource extends AbstractResource
     }
 
     /**
-     * @return array<int, \NormanHuth\HellofreshScraper\Resources\AllergenResource>
+     * @return list<\NormanHuth\HellofreshScraper\Resources\AllergenResource>
      */
     public function allergens(): array
     {
@@ -258,7 +258,7 @@ class RecipeResource extends AbstractResource
     }
 
     /**
-     * @return array<int, \NormanHuth\HellofreshScraper\Resources\IngredientResource>
+     * @return list<\NormanHuth\HellofreshScraper\Resources\IngredientResource>
      */
     public function ingredients(): array
     {
@@ -266,7 +266,7 @@ class RecipeResource extends AbstractResource
     }
 
     /**
-     * @return array<int, \NormanHuth\HellofreshScraper\Resources\UtensilResource>
+     * @return list<\NormanHuth\HellofreshScraper\Resources\UtensilResource>
      */
     public function utensils(): array
     {
@@ -284,7 +284,7 @@ class RecipeResource extends AbstractResource
     }
 
     /**
-     * @return array<int, \NormanHuth\HellofreshScraper\Resources\CuisineResource>
+     * @return list<\NormanHuth\HellofreshScraper\Resources\CuisineResource>
      */
     public function cuisines(): array
     {
@@ -292,7 +292,7 @@ class RecipeResource extends AbstractResource
     }
 
     /**
-     * @return array<int, \NormanHuth\HellofreshScraper\Resources\NutritionResource>
+     * @return list<\NormanHuth\HellofreshScraper\Resources\NutritionResource>
      */
     public function nutrition(): array
     {
@@ -310,7 +310,7 @@ class RecipeResource extends AbstractResource
     }
 
     /**
-     * @return array<int, \NormanHuth\HellofreshScraper\Resources\StepResource>
+     * @return list<\NormanHuth\HellofreshScraper\Resources\StepResource>
      */
     public function steps(): array
     {
@@ -318,7 +318,7 @@ class RecipeResource extends AbstractResource
     }
 
     /**
-     * @return array<int, \NormanHuth\HellofreshScraper\Resources\TagResource>
+     * @return list<\NormanHuth\HellofreshScraper\Resources\TagResource>
      */
     public function tags(): array
     {

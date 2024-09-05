@@ -394,7 +394,7 @@ class Client
     }
 
     /**
-     * @return array<int, \NormanHuth\HellofreshScraper\Resources\RecipeResource>
+     * @return list<\NormanHuth\HellofreshScraper\Resources\RecipeResource>
      *
      * @throws \NormanHuth\HellofreshScraper\Exceptions\HellofreshScraperException
      * @throws \Illuminate\Http\Client\ConnectionException

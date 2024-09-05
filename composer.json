@@ -7,12 +7,6 @@
         "recipes",
         "scraper"
     ],
-    "repositories": [
-        {
-            "url": "https://github.com/Muetze42/psalm",
-            "type": "git"
-        }
-    ],
     "license": "MIT",
     "require": {
         "php": "^8.2",

@@ -10,7 +10,7 @@ class AllergenCollection extends AbstractCollection
     /**
      * Display a listing of the resource.
      *
-     * @return array<int, \NormanHuth\HellofreshScraper\Resources\AllergenResource>
+     * @return list<\NormanHuth\HellofreshScraper\Resources\AllergenResource>
      */
     public function items(): array
     {

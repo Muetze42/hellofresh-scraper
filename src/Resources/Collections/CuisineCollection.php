@@ -10,7 +10,7 @@ class CuisineCollection extends AbstractCollection
     /**
      * Display a listing of the resource.
      *
-     * @return array<int, \NormanHuth\HellofreshScraper\Resources\CuisineResource>
+     * @return list<\NormanHuth\HellofreshScraper\Resources\CuisineResource>
      */
     public function items(): array
     {

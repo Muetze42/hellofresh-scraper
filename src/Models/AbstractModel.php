@@ -6,7 +6,7 @@ use Carbon\CarbonInterval;
 use Illuminate\Database\Eloquent\Concerns\HasAttributes;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use NormanHuth\HellofreshScraper\Concerns\HasPrimaryKeyTrait;
+use NormanHuth\HellofreshScraper\Models\Concerns\HasPrimaryKeyTrait;
 
 class AbstractModel
 {

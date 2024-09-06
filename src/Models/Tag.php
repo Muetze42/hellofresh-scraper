@@ -2,7 +2,7 @@
 
 namespace NormanHuth\HellofreshScraper\Models;
 
-use NormanHuth\HellofreshScraper\Concerns\HasPrimaryKeyTrait;
+use NormanHuth\HellofreshScraper\Models\Concerns\HasPrimaryKeyTrait;
 
 class Tag extends AbstractModel
 {

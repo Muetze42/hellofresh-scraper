@@ -15,7 +15,7 @@ parameters:
     -
       identifier: return.type
       paths:
-        - src/Concerns/HasPrimaryKeyTrait.php
+        - src/Models/Concerns/HasPrimaryKeyTrait.php
         - src/Models/AbstractModel.php
     -
       identifier: missingType.return
@@ -23,3 +23,8 @@ parameters:
     -
       identifier: missingType.generics
       path: src/Models/*
+    -
+      identifier: missingType.iterableValue
+      paths:
+        - src/Http/Client.php
+        - src/Http/Paginator.php

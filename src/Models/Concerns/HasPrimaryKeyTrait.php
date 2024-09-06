@@ -1,6 +1,6 @@
 <?php
 
-namespace NormanHuth\HellofreshScraper\Concerns;
+namespace NormanHuth\HellofreshScraper\Models\Concerns;
 
 trait HasPrimaryKeyTrait
 {

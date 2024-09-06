@@ -1,13 +1,13 @@
 <?php
 
-namespace NormanHuth\HellofreshScraper\Concerns;
+namespace NormanHuth\HellofreshScraper\Models\Concerns;
 
 use Illuminate\Support\Collection;
 
 trait HasAllergensTrait
 {
     /**
-     * @return \Illuminate\Support\Collection<int, \NormanHuth\HellofreshScraper\Models\Allergen>
+     * @return \Illuminate\Support\Collection<array-key, \NormanHuth\HellofreshScraper\Models\Allergen>
      */
     public function allergens(): Collection
     {

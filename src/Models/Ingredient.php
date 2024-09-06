@@ -3,8 +3,8 @@
 namespace NormanHuth\HellofreshScraper\Models;
 
 use Illuminate\Support\Collection;
-use NormanHuth\HellofreshScraper\Concerns\HasAllergensTrait;
-use NormanHuth\HellofreshScraper\Concerns\HasPrimaryKeyTrait;
+use NormanHuth\HellofreshScraper\Models\Concerns\HasAllergensTrait;
+use NormanHuth\HellofreshScraper\Models\Concerns\HasPrimaryKeyTrait;
 
 class Ingredient extends AbstractModel
 {

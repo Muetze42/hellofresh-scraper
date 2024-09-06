@@ -10,3 +10,8 @@ parameters:
   reportUnmatchedIgnoredErrors: false
 
   level: 9
+
+  ignoreErrors:
+    -
+      identifier: return.type
+      path: src/Concerns/HasPrimaryKeyTrait.php

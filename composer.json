@@ -12,9 +12,11 @@
         "php": "^8.2",
         "ext-dom": "*",
         "ext-libxml": "*",
-        "nesbot/carbon": "^2.72.2|^3.0",
-        "illuminate/http": "^v11.22.0",
-        "illuminate/support": "^v11.22.0"
+        "illuminate/cache": "^v11.22",
+        "illuminate/database": "^v11.22",
+        "illuminate/http": "^v11.22",
+        "illuminate/support": "^v11.22",
+        "nesbot/carbon": "^3.8"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
@@ -32,10 +34,15 @@
             "homepage": "https://huth.it"
         }
     ],
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
     "extra": {
         "laravel": {
             "providers": [
-                "NormanHuth\\HellofreshScraper\\PackageServiceProvider"
+                "NormanHuth\\HellofreshScraper\\Providers\\PackageServiceProvider"
             ]
         }
     }

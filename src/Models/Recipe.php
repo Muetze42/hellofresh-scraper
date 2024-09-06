@@ -84,18 +84,9 @@ class Recipe extends AbstractModel
         return parent::getAttributes();
     }
 
-    /**
-     * @return \NormanHuth\HellofreshScraper\Models\Category|null
-     */
     public function category(): ?Category
     {
-        $value = $this->getAttribute('category');
-
-        if (! is_array($value) || empty($value)) {
-            return null;
-        }
-
-        return new Category($value);
+        return $this->hasOne('category');
     }
 
     /**
@@ -103,102 +94,51 @@ class Recipe extends AbstractModel
      */
     public function label(): ?Label
     {
-        $value = $this->getAttribute('label');
-
-        if (! is_array($value) || empty($value)) {
-            return null;
-        }
-
-        return new Label($value);
+        return $this->hasOne('label');
     }
 
     /**
-     * @return \Illuminate\Support\Collection<int, \NormanHuth\HellofreshScraper\Models\Cuisine>
+     * @return \Illuminate\Support\Collection<array-key, \NormanHuth\HellofreshScraper\Models\Cuisine>
      */
     public function cuisines(): Collection
     {
-        $value = $this->getAttribute('cuisines');
-
-        if (! is_array($value) || empty($value)) {
-            return collect();
-        }
-
-        return collect(array_map(
-            fn ($allergen) => new Cuisine($allergen),
-            $value
-        ));
+        return $this->hasMany('cuisines');
     }
 
     /**
-     * @return \Illuminate\Support\Collection<int, \NormanHuth\HellofreshScraper\Models\Ingredient>
+     * @return \Illuminate\Support\Collection<array-key, \NormanHuth\HellofreshScraper\Models\Ingredient>
      */
     public function ingredients(): Collection
     {
-        $value = $this->getAttribute('ingredients');
-
-        if (! is_array($value) || empty($value)) {
-            return collect();
-        }
-
-        return collect(array_map(
-            fn ($allergen) => new Ingredient($allergen),
-            $value
-        ));
+        return $this->hasMany('ingredients');
     }
 
     /**
-     * @return \Illuminate\Support\Collection<int, \NormanHuth\HellofreshScraper\Models\Nutrition>
+     * @return \Illuminate\Support\Collection<array-key, \NormanHuth\HellofreshScraper\Models\Nutrition>
      */
     public function nutrition(): Collection
     {
-        $value = $this->getAttribute('nutrition');
-
-        if (! is_array($value) || empty($value)) {
-            return collect();
-        }
-
-        return collect(array_map(
-            fn ($allergen) => new Nutrition($allergen),
-            $value
-        ));
+        return $this->hasMany('nutrition');
     }
 
     /**
-     * @return \Illuminate\Support\Collection<int, \NormanHuth\HellofreshScraper\Models\Step>
+     * @return \Illuminate\Support\Collection<array-key, \NormanHuth\HellofreshScraper\Models\Step>
      */
     public function steps(): Collection
     {
-        $value = $this->getAttribute('steps');
-
-        if (! is_array($value) || empty($value)) {
-            return collect();
-        }
-
-        return collect(array_map(
-            fn ($allergen) => new Step($allergen),
-            $value
-        ));
+        return $this->hasMany('steps');
     }
 
     /**
-     * @return \Illuminate\Support\Collection<int, \NormanHuth\HellofreshScraper\Models\Tag>
+     * @return \Illuminate\Support\Collection<array-key, \NormanHuth\HellofreshScraper\Models\Tag>
      */
     public function tags(): Collection
     {
-        $value = $this->getAttribute('tags');
-
-        if (! is_array($value) || empty($value)) {
-            return collect();
-        }
-
-        return collect(array_map(
-            fn ($allergen) => new Tag($allergen),
-            $value
-        ));
+        return $this->hasMany('tags');
     }
 
     /**
-     * @return \Illuminate\Support\Collection<int, \NormanHuth\HellofreshScraper\Models\YieldsItem>
+     * @return \Illuminate\Support\Collection<array-key, \NormanHuth\HellofreshScraper\Models\YieldsItem>
      */
     public function yields(): Collection
     {
@@ -216,8 +156,6 @@ class Recipe extends AbstractModel
 
     /**
      * Get the total time in minutes.
-     *
-     * @return int|null
      */
     public function totalTime(): ?int
     {
@@ -226,8 +164,6 @@ class Recipe extends AbstractModel
 
     /**
      * Get the prep time in minutes.
-     *
-     * @return int|null
      */
     public function prepTime(): ?int
     {
@@ -236,8 +172,6 @@ class Recipe extends AbstractModel
 
     /**
      * Determine if this recipe is active.
-     *
-     * @return bool
      */
     public function active(): bool
     {
@@ -246,8 +180,6 @@ class Recipe extends AbstractModel
 
     /**
      * Determine if this recipe is an Addon.
-     *
-     * @return bool
      */
     public function isAddon(): bool
     {
@@ -256,8 +188,6 @@ class Recipe extends AbstractModel
 
     /**
      * Determine if this recipe has an image to display.
-     *
-     * @return bool
      */
     public function hasImage(): bool
     {

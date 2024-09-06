@@ -5,4 +5,5 @@ READ ONLY: This package repository is a part of the HelloFresh Database:
 
 [Postman Collection](https://www.postman.com/muetzeofficial/workspace/norman-huth/collection/7458133-7d368cd1-11d2-46f5-b27b-ba8b8e636348?action=share&creator=7458133)
 
-Todo: No errors with PHPStan
+Todo: No errors with PHPStan  
+See `ignoreErrors` in [phpstan.neon](phpstan.neon)

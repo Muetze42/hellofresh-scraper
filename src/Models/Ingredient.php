@@ -2,6 +2,7 @@
 
 namespace NormanHuth\HellofreshScraper\Models;
 
+use Illuminate\Support\Collection;
 use NormanHuth\HellofreshScraper\Concerns\HasAllergensTrait;
 use NormanHuth\HellofreshScraper\Concerns\HasPrimaryKeyTrait;
 
@@ -53,12 +54,14 @@ class Ingredient extends AbstractModel
      */
     public function family(): ?Family
     {
-        $value = $this->getAttribute('family');
+        return $this->hasOne('family');
+    }
 
-        if (! is_array($value) || empty($value)) {
-            return null;
-        }
-
-        return new Family($value);
+    /**
+     * @return \Illuminate\Support\Collection<array-key, \NormanHuth\HellofreshScraper\Models\Allergen>
+     */
+    public function allergens(): Collection
+    {
+        return $this->hasMany('family');
     }
 }

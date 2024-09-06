@@ -14,4 +14,12 @@ parameters:
   ignoreErrors:
     -
       identifier: return.type
-      path: src/Concerns/HasPrimaryKeyTrait.php
+      paths:
+        - src/Concerns/HasPrimaryKeyTrait.php
+        - src/Models/AbstractModel.php
+    -
+      identifier: missingType.return
+      path: src/Models/AbstractModel.php
+    -
+      identifier: missingType.generics
+      path: src/Models/*

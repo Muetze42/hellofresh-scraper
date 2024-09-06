@@ -18,13 +18,13 @@ trait IndexRequestsTrait
      *
      * @param  string  $uri
      * @param  int  $skip
-     * @return array<string, mixed>
+     * @return object<string, mixed>
      *
      * @throws \Illuminate\Http\Client\ConnectionException
      * @throws \Illuminate\Http\Client\RequestException
      * @throws \NormanHuth\HellofreshScraper\Exceptions\ClientException
      */
-    protected function indexRequest(string $uri, int $skip = 0): array
+    protected function indexRequest(string $uri, int $skip = 0): object
     {
         $response = $this->request($uri, [
             'skip' => $skip,
@@ -32,7 +32,7 @@ trait IndexRequestsTrait
 
         $class = $this->modelNamespace . ucfirst(Str::singular($uri));
 
-        return [
+        return (object) [
             'paginator' => new Paginator($response),
             'items' => collect(array_map(
                 fn (array $item) => new $class($item),
@@ -44,7 +44,7 @@ trait IndexRequestsTrait
     /**
      * @phpstan-return  array<string, mixed>
      *
-     * @return array{
+     * @return object{
      *     paginator: \NormanHuth\HellofreshScraper\Http\Paginator,
      *     items: \Illuminate\Support\Collection<array-key, \NormanHuth\HellofreshScraper\Models\Allergen>
      * }
@@ -53,7 +53,7 @@ trait IndexRequestsTrait
      * @throws \Illuminate\Http\Client\RequestException
      * @throws \NormanHuth\HellofreshScraper\Exceptions\ClientException
      */
-    public function allergens(int $skip = 0): array
+    public function allergens(int $skip = 0): object
     {
         return $this->indexRequest('allergens', $skip);
     }
@@ -61,7 +61,7 @@ trait IndexRequestsTrait
     /**
      * @phpstan-return  array<string, mixed>
      *
-     * @return array{
+     * @return object{
      *     paginator: \NormanHuth\HellofreshScraper\Http\Paginator,
      *     items: \Illuminate\Support\Collection<array-key, \NormanHuth\HellofreshScraper\Models\Cuisine>
      * }
@@ -70,7 +70,7 @@ trait IndexRequestsTrait
      * @throws \Illuminate\Http\Client\RequestException
      * @throws \NormanHuth\HellofreshScraper\Exceptions\ClientException
      */
-    public function cuisines(int $skip = 0): array
+    public function cuisines(int $skip = 0): object
     {
         return $this->indexRequest('cuisines', $skip);
     }
@@ -78,7 +78,7 @@ trait IndexRequestsTrait
     /**
      * @phpstan-return  array<string, mixed>
      *
-     * @return array{
+     * @return object{
      *     paginator: \NormanHuth\HellofreshScraper\Http\Paginator,
      *     items: \Illuminate\Support\Collection<array-key, \NormanHuth\HellofreshScraper\Models\Ingredient>
      * }
@@ -87,7 +87,7 @@ trait IndexRequestsTrait
      * @throws \Illuminate\Http\Client\RequestException
      * @throws \NormanHuth\HellofreshScraper\Exceptions\ClientException
      */
-    public function ingredients(int $skip = 0): array
+    public function ingredients(int $skip = 0): object
     {
         return $this->indexRequest('ingredients', $skip);
     }
@@ -95,7 +95,7 @@ trait IndexRequestsTrait
     /**
      * @phpstan-return  array<string, mixed>
      *
-     * @return array{
+     * @return object{
      *     paginator: \NormanHuth\HellofreshScraper\Http\Paginator,
      *     items: \Illuminate\Support\Collection<array-key, \NormanHuth\HellofreshScraper\Models\Recipe>
      * }
@@ -104,7 +104,7 @@ trait IndexRequestsTrait
      * @throws \Illuminate\Http\Client\RequestException
      * @throws \NormanHuth\HellofreshScraper\Exceptions\ClientException
      */
-    public function recipes(int $skip = 0): array
+    public function recipes(int $skip = 0): object
     {
         return $this->indexRequest('recipes', $skip);
     }
@@ -113,7 +113,7 @@ trait IndexRequestsTrait
      * @param  string  $id
      * @param  int  $take
      * @param  int  $skip
-     * @return array{
+     * @return object{
      *      paginator: \NormanHuth\HellofreshScraper\Http\Paginator,
      *      items: \Illuminate\Support\Collection<array-key, \NormanHuth\HellofreshScraper\Models\Recipe>
      *  }
@@ -122,14 +122,14 @@ trait IndexRequestsTrait
      * @throws \Illuminate\Http\Client\RequestException
      * @throws \NormanHuth\HellofreshScraper\Exceptions\ClientException
      */
-    public function recipeRecommendations(string $id, int $take = 10, int $skip = 0): array
+    public function recipeRecommendations(string $id, int $take = 10, int $skip = 0): object
     {
         $response = $this->request('recipes/' . $id . '/recommendations', [
             'skip' => $skip,
             'take' => $take,
         ]);
 
-        return [
+        return (object) [
             'paginator' => new Paginator($response),
             'items' => collect(array_map(
                 fn (array $item) => new Recipe($item),

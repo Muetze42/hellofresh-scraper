@@ -1,6 +1,6 @@
 <?php
 
-namespace NormanHuth\HellofreshScraper\Models;
+namespace NormanHuth\HelloFreshScraper\Models;
 
 class YieldsItem extends AbstractModel
 {

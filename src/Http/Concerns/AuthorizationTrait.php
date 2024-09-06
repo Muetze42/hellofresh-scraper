@@ -1,9 +1,9 @@
 <?php
 
-namespace NormanHuth\HellofreshScraper\Http\Concerns;
+namespace NormanHuth\HelloFreshScraper\Http\Concerns;
 
 use Illuminate\Support\Facades\Cache;
-use NormanHuth\HellofreshScraper\Exceptions\ClientException;
+use NormanHuth\HelloFreshScraper\Exceptions\ClientException;
 
 trait AuthorizationTrait
 {
@@ -12,7 +12,7 @@ trait AuthorizationTrait
      *
      * @return string
      *
-     * @throws \NormanHuth\HellofreshScraper\Exceptions\ClientException
+     * @throws \NormanHuth\HelloFreshScraper\Exceptions\ClientException
      */
     public function token(): string
     {
@@ -38,7 +38,7 @@ trait AuthorizationTrait
      *
      * @return string
      *
-     * @throws \NormanHuth\HellofreshScraper\Exceptions\ClientException
+     * @throws \NormanHuth\HelloFreshScraper\Exceptions\ClientException
      */
     public function refreshToken(): string
     {

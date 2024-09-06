@@ -1,10 +1,10 @@
 <?php
 
-namespace NormanHuth\HellofreshScraper\Models;
+namespace NormanHuth\HelloFreshScraper\Models;
 
 use Illuminate\Support\Collection;
-use NormanHuth\HellofreshScraper\Models\Concerns\HasAllergensTrait;
-use NormanHuth\HellofreshScraper\Models\Concerns\HasPrimaryKeyTrait;
+use NormanHuth\HelloFreshScraper\Models\Concerns\HasAllergensTrait;
+use NormanHuth\HelloFreshScraper\Models\Concerns\HasPrimaryKeyTrait;
 
 class Ingredient extends AbstractModel
 {
@@ -50,7 +50,7 @@ class Ingredient extends AbstractModel
     }
 
     /**
-     * @return \NormanHuth\HellofreshScraper\Models\Family|null
+     * @return \NormanHuth\HelloFreshScraper\Models\Family|null
      */
     public function family(): ?Family
     {
@@ -58,7 +58,7 @@ class Ingredient extends AbstractModel
     }
 
     /**
-     * @return \Illuminate\Support\Collection<array-key, \NormanHuth\HellofreshScraper\Models\Allergen>
+     * @return \Illuminate\Support\Collection<array-key, \NormanHuth\HelloFreshScraper\Models\Allergen>
      */
     public function allergens(): Collection
     {

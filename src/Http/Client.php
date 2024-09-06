@@ -1,15 +1,15 @@
 <?php
 
-namespace NormanHuth\HellofreshScraper\Http;
+namespace NormanHuth\HelloFreshScraper\Http;
 
 use DOMDocument;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Sleep;
 use Illuminate\Support\Str;
-use NormanHuth\HellofreshScraper\Exceptions\ClientException;
-use NormanHuth\HellofreshScraper\Http\Concerns\AuthorizationTrait;
-use NormanHuth\HellofreshScraper\Http\Concerns\IndexRequestsTrait;
-use NormanHuth\HellofreshScraper\Http\Concerns\ShowRequestsTrait;
+use NormanHuth\HelloFreshScraper\Exceptions\ClientException;
+use NormanHuth\HelloFreshScraper\Http\Concerns\AuthorizationTrait;
+use NormanHuth\HelloFreshScraper\Http\Concerns\IndexRequestsTrait;
+use NormanHuth\HelloFreshScraper\Http\Concerns\ShowRequestsTrait;
 
 class Client
 {
@@ -79,7 +79,7 @@ class Client
      *
      * @throws \Illuminate\Http\Client\ConnectionException
      * @throws \Illuminate\Http\Client\RequestException
-     * @throws \NormanHuth\HellofreshScraper\Exceptions\ClientException
+     * @throws \NormanHuth\HelloFreshScraper\Exceptions\ClientException
      */
     protected function request(string $uri, array $query = []): array
     {
@@ -117,7 +117,7 @@ class Client
      *
      * @return array|mixed|null
      *
-     * @throws \NormanHuth\HellofreshScraper\Exceptions\ClientException
+     * @throws \NormanHuth\HelloFreshScraper\Exceptions\ClientException
      */
     protected function getSsrPayload(string $key): mixed
     {

@@ -1,17 +1,17 @@
 <?php
 
-namespace NormanHuth\HellofreshScraper\Http\Concerns;
+namespace NormanHuth\HelloFreshScraper\Http\Concerns;
 
 use Illuminate\Support\Str;
-use NormanHuth\HellofreshScraper\Http\Paginator;
-use NormanHuth\HellofreshScraper\Models\Recipe;
+use NormanHuth\HelloFreshScraper\Http\Paginator;
+use NormanHuth\HelloFreshScraper\Models\Recipe;
 
 trait IndexRequestsTrait
 {
     /**
      * The namespace for the models.
      */
-    protected string $modelNamespace = 'NormanHuth\HellofreshScraper\Models\\';
+    protected string $modelNamespace = 'NormanHuth\HelloFreshScraper\Models\\';
 
     /**
      * @param  string  $uri
@@ -20,7 +20,7 @@ trait IndexRequestsTrait
      *
      * @throws \Illuminate\Http\Client\ConnectionException
      * @throws \Illuminate\Http\Client\RequestException
-     * @throws \NormanHuth\HellofreshScraper\Exceptions\ClientException
+     * @throws \NormanHuth\HelloFreshScraper\Exceptions\ClientException
      */
     protected function indexRequest(string $uri, int $skip = 0): object
     {
@@ -43,13 +43,13 @@ trait IndexRequestsTrait
      * @phpstan-return object
      *
      * @return object{
-     *     paginator: \NormanHuth\HellofreshScraper\Http\Paginator,
-     *     items: \Illuminate\Support\Collection<array-key, \NormanHuth\HellofreshScraper\Models\Allergen>
+     *     paginator: \NormanHuth\HelloFreshScraper\Http\Paginator,
+     *     items: \Illuminate\Support\Collection<array-key, \NormanHuth\HelloFreshScraper\Models\Allergen>
      * }
      *
      * @throws \Illuminate\Http\Client\ConnectionException
      * @throws \Illuminate\Http\Client\RequestException
-     * @throws \NormanHuth\HellofreshScraper\Exceptions\ClientException
+     * @throws \NormanHuth\HelloFreshScraper\Exceptions\ClientException
      */
     public function allergens(int $skip = 0): object
     {
@@ -60,13 +60,13 @@ trait IndexRequestsTrait
      * @phpstan-return object
      *
      * @return object{
-     *     paginator: \NormanHuth\HellofreshScraper\Http\Paginator,
-     *     items: \Illuminate\Support\Collection<array-key, \NormanHuth\HellofreshScraper\Models\Cuisine>
+     *     paginator: \NormanHuth\HelloFreshScraper\Http\Paginator,
+     *     items: \Illuminate\Support\Collection<array-key, \NormanHuth\HelloFreshScraper\Models\Cuisine>
      * }
      *
      * @throws \Illuminate\Http\Client\ConnectionException
      * @throws \Illuminate\Http\Client\RequestException
-     * @throws \NormanHuth\HellofreshScraper\Exceptions\ClientException
+     * @throws \NormanHuth\HelloFreshScraper\Exceptions\ClientException
      */
     public function cuisines(int $skip = 0): object
     {
@@ -77,13 +77,13 @@ trait IndexRequestsTrait
      * @phpstan-return object
      *
      * @return object{
-     *     paginator: \NormanHuth\HellofreshScraper\Http\Paginator,
-     *     items: \Illuminate\Support\Collection<array-key, \NormanHuth\HellofreshScraper\Models\Ingredient>
+     *     paginator: \NormanHuth\HelloFreshScraper\Http\Paginator,
+     *     items: \Illuminate\Support\Collection<array-key, \NormanHuth\HelloFreshScraper\Models\Ingredient>
      * }
      *
      * @throws \Illuminate\Http\Client\ConnectionException
      * @throws \Illuminate\Http\Client\RequestException
-     * @throws \NormanHuth\HellofreshScraper\Exceptions\ClientException
+     * @throws \NormanHuth\HelloFreshScraper\Exceptions\ClientException
      */
     public function ingredients(int $skip = 0): object
     {
@@ -94,13 +94,13 @@ trait IndexRequestsTrait
      * @phpstan-return object
      *
      * @return object{
-     *     paginator: \NormanHuth\HellofreshScraper\Http\Paginator,
-     *     items: \Illuminate\Support\Collection<array-key, \NormanHuth\HellofreshScraper\Models\Recipe>
+     *     paginator: \NormanHuth\HelloFreshScraper\Http\Paginator,
+     *     items: \Illuminate\Support\Collection<array-key, \NormanHuth\HelloFreshScraper\Models\Recipe>
      * }
      *
      * @throws \Illuminate\Http\Client\ConnectionException
      * @throws \Illuminate\Http\Client\RequestException
-     * @throws \NormanHuth\HellofreshScraper\Exceptions\ClientException
+     * @throws \NormanHuth\HelloFreshScraper\Exceptions\ClientException
      */
     public function recipes(int $skip = 0): object
     {
@@ -114,13 +114,13 @@ trait IndexRequestsTrait
      * @param  int  $take
      * @param  int  $skip
      * @return object{
-     *      paginator: \NormanHuth\HellofreshScraper\Http\Paginator,
-     *      items: \Illuminate\Support\Collection<array-key, \NormanHuth\HellofreshScraper\Models\Recipe>
+     *      paginator: \NormanHuth\HelloFreshScraper\Http\Paginator,
+     *      items: \Illuminate\Support\Collection<array-key, \NormanHuth\HelloFreshScraper\Models\Recipe>
      *  }
      *
      * @throws \Illuminate\Http\Client\ConnectionException
      * @throws \Illuminate\Http\Client\RequestException
-     * @throws \NormanHuth\HellofreshScraper\Exceptions\ClientException
+     * @throws \NormanHuth\HelloFreshScraper\Exceptions\ClientException
      */
     public function recipeRecommendations(string $id, int $take = 10, int $skip = 0): object
     {

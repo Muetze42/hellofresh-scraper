@@ -25,7 +25,7 @@
     },
     "autoload": {
         "psr-4": {
-            "NormanHuth\\HellofreshScraper\\": "src/"
+            "NormanHuth\\HelloFreshScraper\\": "src/"
         }
     },
     "authors": [
@@ -42,7 +42,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "NormanHuth\\HellofreshScraper\\Providers\\PackageServiceProvider"
+                "NormanHuth\\HelloFreshScraper\\Providers\\PackageServiceProvider"
             ]
         }
     }

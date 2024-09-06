@@ -1,6 +1,6 @@
 <?php
 
-namespace NormanHuth\HellofreshScraper\Http;
+namespace NormanHuth\HelloFreshScraper\Http;
 
 class Paginator
 {

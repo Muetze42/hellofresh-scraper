@@ -1,12 +1,12 @@
 <?php
 
-namespace NormanHuth\HellofreshScraper\Models;
+namespace NormanHuth\HelloFreshScraper\Models;
 
 use Carbon\CarbonInterval;
 use Illuminate\Database\Eloquent\Concerns\HasAttributes;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use NormanHuth\HellofreshScraper\Models\Concerns\HasPrimaryKeyTrait;
+use NormanHuth\HelloFreshScraper\Models\Concerns\HasPrimaryKeyTrait;
 
 class AbstractModel
 {

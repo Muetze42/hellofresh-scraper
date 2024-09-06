@@ -1,21 +1,21 @@
 <?php
 
-namespace NormanHuth\HellofreshScraper\Http\Concerns;
+namespace NormanHuth\HelloFreshScraper\Http\Concerns;
 
-use NormanHuth\HellofreshScraper\Models\Allergen;
-use NormanHuth\HellofreshScraper\Models\Cuisine;
-use NormanHuth\HellofreshScraper\Models\Ingredient;
-use NormanHuth\HellofreshScraper\Models\Recipe;
+use NormanHuth\HelloFreshScraper\Models\Allergen;
+use NormanHuth\HelloFreshScraper\Models\Cuisine;
+use NormanHuth\HelloFreshScraper\Models\Ingredient;
+use NormanHuth\HelloFreshScraper\Models\Recipe;
 
 trait ShowRequestsTrait
 {
     /**
      * @param  string  $id
-     * @return \NormanHuth\HellofreshScraper\Models\Allergen
+     * @return \NormanHuth\HelloFreshScraper\Models\Allergen
      *
      * @throws \Illuminate\Http\Client\ConnectionException
      * @throws \Illuminate\Http\Client\RequestException
-     * @throws \NormanHuth\HellofreshScraper\Exceptions\ClientException
+     * @throws \NormanHuth\HelloFreshScraper\Exceptions\ClientException
      */
     public function allergen(string $id): Allergen
     {
@@ -24,11 +24,11 @@ trait ShowRequestsTrait
 
     /**
      * @param  string  $id
-     * @return \NormanHuth\HellofreshScraper\Models\Cuisine
+     * @return \NormanHuth\HelloFreshScraper\Models\Cuisine
      *
      * @throws \Illuminate\Http\Client\ConnectionException
      * @throws \Illuminate\Http\Client\RequestException
-     * @throws \NormanHuth\HellofreshScraper\Exceptions\ClientException
+     * @throws \NormanHuth\HelloFreshScraper\Exceptions\ClientException
      */
     public function cuisine(string $id): Cuisine
     {
@@ -37,11 +37,11 @@ trait ShowRequestsTrait
 
     /**
      * @param  string  $id
-     * @return \NormanHuth\HellofreshScraper\Models\Ingredient
+     * @return \NormanHuth\HelloFreshScraper\Models\Ingredient
      *
      * @throws \Illuminate\Http\Client\ConnectionException
      * @throws \Illuminate\Http\Client\RequestException
-     * @throws \NormanHuth\HellofreshScraper\Exceptions\ClientException
+     * @throws \NormanHuth\HelloFreshScraper\Exceptions\ClientException
      */
     public function ingredient(string $id): Ingredient
     {
@@ -50,11 +50,11 @@ trait ShowRequestsTrait
 
     /**
      * @param  string  $id
-     * @return \NormanHuth\HellofreshScraper\Models\Recipe
+     * @return \NormanHuth\HelloFreshScraper\Models\Recipe
      *
      * @throws \Illuminate\Http\Client\ConnectionException
      * @throws \Illuminate\Http\Client\RequestException
-     * @throws \NormanHuth\HellofreshScraper\Exceptions\ClientException
+     * @throws \NormanHuth\HelloFreshScraper\Exceptions\ClientException
      */
     public function recipe(string $id): Recipe
     {

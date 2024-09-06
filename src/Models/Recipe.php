@@ -1,10 +1,10 @@
 <?php
 
-namespace NormanHuth\HellofreshScraper\Models;
+namespace NormanHuth\HelloFreshScraper\Models;
 
 use Illuminate\Support\Collection;
-use NormanHuth\HellofreshScraper\Models\Concerns\HasAllergensTrait;
-use NormanHuth\HellofreshScraper\Models\Concerns\HasPrimaryKeyTrait;
+use NormanHuth\HelloFreshScraper\Models\Concerns\HasAllergensTrait;
+use NormanHuth\HelloFreshScraper\Models\Concerns\HasPrimaryKeyTrait;
 
 class Recipe extends AbstractModel
 {
@@ -90,7 +90,7 @@ class Recipe extends AbstractModel
     }
 
     /**
-     * @return \NormanHuth\HellofreshScraper\Models\Label|null
+     * @return \NormanHuth\HelloFreshScraper\Models\Label|null
      */
     public function label(): ?Label
     {
@@ -98,7 +98,7 @@ class Recipe extends AbstractModel
     }
 
     /**
-     * @return \Illuminate\Support\Collection<array-key, \NormanHuth\HellofreshScraper\Models\Cuisine>
+     * @return \Illuminate\Support\Collection<array-key, \NormanHuth\HelloFreshScraper\Models\Cuisine>
      */
     public function cuisines(): Collection
     {
@@ -106,7 +106,7 @@ class Recipe extends AbstractModel
     }
 
     /**
-     * @return \Illuminate\Support\Collection<array-key, \NormanHuth\HellofreshScraper\Models\Ingredient>
+     * @return \Illuminate\Support\Collection<array-key, \NormanHuth\HelloFreshScraper\Models\Ingredient>
      */
     public function ingredients(): Collection
     {
@@ -114,7 +114,7 @@ class Recipe extends AbstractModel
     }
 
     /**
-     * @return \Illuminate\Support\Collection<array-key, \NormanHuth\HellofreshScraper\Models\Nutrition>
+     * @return \Illuminate\Support\Collection<array-key, \NormanHuth\HelloFreshScraper\Models\Nutrition>
      */
     public function nutrition(): Collection
     {
@@ -122,7 +122,7 @@ class Recipe extends AbstractModel
     }
 
     /**
-     * @return \Illuminate\Support\Collection<array-key, \NormanHuth\HellofreshScraper\Models\Step>
+     * @return \Illuminate\Support\Collection<array-key, \NormanHuth\HelloFreshScraper\Models\Step>
      */
     public function steps(): Collection
     {
@@ -130,7 +130,7 @@ class Recipe extends AbstractModel
     }
 
     /**
-     * @return \Illuminate\Support\Collection<array-key, \NormanHuth\HellofreshScraper\Models\Tag>
+     * @return \Illuminate\Support\Collection<array-key, \NormanHuth\HelloFreshScraper\Models\Tag>
      */
     public function tags(): Collection
     {
@@ -138,7 +138,7 @@ class Recipe extends AbstractModel
     }
 
     /**
-     * @return \Illuminate\Support\Collection<array-key, \NormanHuth\HellofreshScraper\Models\YieldsItem>
+     * @return \Illuminate\Support\Collection<array-key, \NormanHuth\HelloFreshScraper\Models\YieldsItem>
      */
     public function yields(): Collection
     {

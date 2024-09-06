@@ -1,6 +1,6 @@
 <?php
 
-namespace NormanHuth\HellofreshScraper\Providers;
+namespace NormanHuth\HelloFreshScraper\Providers;
 
 use Composer\InstalledVersions;
 use Illuminate\Foundation\Console\AboutCommand;

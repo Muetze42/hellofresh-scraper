@@ -1,6 +1,6 @@
 <?php
 
-namespace NormanHuth\HellofreshScraper\Exceptions;
+namespace NormanHuth\HelloFreshScraper\Exceptions;
 
 use Exception;
 

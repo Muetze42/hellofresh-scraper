@@ -1,8 +1,8 @@
 <?php
 
-namespace NormanHuth\HellofreshScraper\Models;
+namespace NormanHuth\HelloFreshScraper\Models;
 
-use NormanHuth\HellofreshScraper\Models\Concerns\HasPrimaryKeyTrait;
+use NormanHuth\HelloFreshScraper\Models\Concerns\HasPrimaryKeyTrait;
 
 class Category extends AbstractModel
 {

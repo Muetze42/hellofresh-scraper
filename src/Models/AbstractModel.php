@@ -64,13 +64,13 @@ class AbstractModel
      */
     protected function toMinutes(string $attribute): ?int
     {
-        $attribute = $this->getAttribute($attribute);
+        $value = $this->getAttribute($attribute);
 
-        if (! is_string($attribute) || empty($attribute)) {
+        if (! is_string($value) || empty($value)) {
             return null;
         }
 
-        return (int) CarbonInterval::make($attribute)?->totalMinutes;
+        return (int) CarbonInterval::make($value)?->totalMinutes;
     }
 
     /**
@@ -79,8 +79,8 @@ class AbstractModel
      */
     protected function bool(string $attribute): bool
     {
-        $attribute = $this->getAttribute($attribute);
+        $value = $this->getAttribute($attribute);
 
-        return is_bool($attribute) ? $attribute : false;
+        return is_bool($value) ? $value : false;
     }
 }

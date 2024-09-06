@@ -89,13 +89,13 @@ class Recipe extends AbstractModel
      */
     public function category(): ?Category
     {
-        $attribute = $this->getAttribute('category');
+        $value = $this->getAttribute('category');
 
-        if (! is_array($attribute) || empty($attribute)) {
+        if (! is_array($value) || empty($value)) {
             return null;
         }
 
-        return new Category($attribute);
+        return new Category($value);
     }
 
     /**
@@ -103,13 +103,13 @@ class Recipe extends AbstractModel
      */
     public function label(): ?Label
     {
-        $attribute = $this->getAttribute('label');
+        $value = $this->getAttribute('label');
 
-        if (! is_array($attribute) || empty($attribute)) {
+        if (! is_array($value) || empty($value)) {
             return null;
         }
 
-        return new Label($attribute);
+        return new Label($value);
     }
 
     /**
@@ -117,15 +117,15 @@ class Recipe extends AbstractModel
      */
     public function cuisines(): Collection
     {
-        $attribute = $this->getAttribute('cuisines');
+        $value = $this->getAttribute('cuisines');
 
-        if (! is_array($attribute) || empty($attribute)) {
+        if (! is_array($value) || empty($value)) {
             return collect();
         }
 
         return collect(array_map(
             fn ($allergen) => new Cuisine($allergen),
-            $attribute
+            $value
         ));
     }
 
@@ -134,15 +134,15 @@ class Recipe extends AbstractModel
      */
     public function ingredients(): Collection
     {
-        $attribute = $this->getAttribute('ingredients');
+        $value = $this->getAttribute('ingredients');
 
-        if (! is_array($attribute) || empty($attribute)) {
+        if (! is_array($value) || empty($value)) {
             return collect();
         }
 
         return collect(array_map(
             fn ($allergen) => new Ingredient($allergen),
-            $attribute
+            $value
         ));
     }
 
@@ -151,15 +151,15 @@ class Recipe extends AbstractModel
      */
     public function nutrition(): Collection
     {
-        $attribute = $this->getAttribute('nutrition');
+        $value = $this->getAttribute('nutrition');
 
-        if (! is_array($attribute) || empty($attribute)) {
+        if (! is_array($value) || empty($value)) {
             return collect();
         }
 
         return collect(array_map(
             fn ($allergen) => new Nutrition($allergen),
-            $attribute
+            $value
         ));
     }
 
@@ -168,15 +168,15 @@ class Recipe extends AbstractModel
      */
     public function steps(): Collection
     {
-        $attribute = $this->getAttribute('steps');
+        $value = $this->getAttribute('steps');
 
-        if (! is_array($attribute) || empty($attribute)) {
+        if (! is_array($value) || empty($value)) {
             return collect();
         }
 
         return collect(array_map(
             fn ($allergen) => new Step($allergen),
-            $attribute
+            $value
         ));
     }
 
@@ -185,15 +185,15 @@ class Recipe extends AbstractModel
      */
     public function tags(): Collection
     {
-        $attribute = $this->getAttribute('tags');
+        $value = $this->getAttribute('tags');
 
-        if (! is_array($attribute) || empty($attribute)) {
+        if (! is_array($value) || empty($value)) {
             return collect();
         }
 
         return collect(array_map(
             fn ($allergen) => new Tag($allergen),
-            $attribute
+            $value
         ));
     }
 
@@ -202,15 +202,15 @@ class Recipe extends AbstractModel
      */
     public function yields(): Collection
     {
-        $attribute = $this->getAttribute('yields');
+        $value = $this->getAttribute('yields');
 
-        if (! is_array($attribute) || empty($attribute)) {
+        if (! is_array($value) || empty($value)) {
             return collect();
         }
 
         return collect(array_map(
             fn ($allergen) => new YieldsItem($allergen),
-            $attribute
+            $value
         ));
     }
 
@@ -261,8 +261,8 @@ class Recipe extends AbstractModel
      */
     public function hasImage(): bool
     {
-        $attribute = $this->getAttribute('imagePath');
+        $value = $this->getAttribute('imagePath');
 
-        return ! empty($attribute) && is_string($attribute);
+        return ! empty($value) && is_string($value);
     }
 }

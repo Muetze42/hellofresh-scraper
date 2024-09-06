@@ -12,15 +12,15 @@ trait HasAllergensTrait
      */
     public function allergens(): Collection
     {
-        $attribute = $this->getAttribute('allergens');
+        $value = $this->getAttribute('allergens');
 
-        if (! is_array($attribute) || empty($attribute)) {
+        if (! is_array($value) || empty($value)) {
             return collect();
         }
 
         return collect(array_map(
             fn ($allergen) => new Allergen($allergen),
-            $attribute
+            $value
         ));
     }
 }

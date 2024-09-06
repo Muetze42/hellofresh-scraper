@@ -53,12 +53,12 @@ class Ingredient extends AbstractModel
      */
     public function family(): ?Family
     {
-        $attribute = $this->getAttribute('family');
+        $value = $this->getAttribute('family');
 
-        if (! is_array($attribute) || empty($attribute)) {
+        if (! is_array($value) || empty($value)) {
             return null;
         }
 
-        return new Family($attribute);
+        return new Family($value);
     }
 }

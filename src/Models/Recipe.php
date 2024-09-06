@@ -33,7 +33,7 @@ class Recipe extends AbstractModel
      *
      * @return array{
      *     active: bool,
-     *     allergens: array,
+     *     allergens: array<string, mixed>|null,
      *     averageRating: int,
      *     canonical: string|null,
      *     canonicalLink: string|null,
@@ -59,7 +59,7 @@ class Recipe extends AbstractModel
      *     label: array<string, mixed>,
      *     link: string,
      *     name: string,
-     *     nutrition: array,
+     *     nutrition: array<array-key, array<string, mixed>>,
      *     prepTime: string|null,
      *     promotion: string|null,
      *     ratingsCount: int,

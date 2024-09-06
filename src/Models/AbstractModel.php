@@ -36,14 +36,6 @@ class AbstractModel
     }
 
     /**
-     * Get the value indicating whether the IDs are incrementing.
-     */
-    public function getIncrementing(): bool
-    {
-        return false;
-    }
-
-    /**
      * Get an attribute from the model.
      */
     public function getAttribute(string $key): mixed
@@ -113,5 +105,13 @@ class AbstractModel
             fn ($allergen) => new $class($allergen),
             $value
         ));
+    }
+
+    /**
+     * Get the value indicating whether the IDs are incrementing.
+     */
+    public function getIncrementing(): bool
+    {
+        return false;
     }
 }

@@ -25,7 +25,7 @@ class Step extends AbstractModel
      *     instructionsMarkdown: string,
      *     ingredients: string[],
      *     utensils: string[],
-     *     timers: array,
+     *     timers: string[],
      *     images: array<array-key, array<string, string>>,
      *     videos: array<array-key, array<string, string>>,
      *  }

@@ -39,7 +39,7 @@ class Ingredient extends AbstractModel
      *     shipped: bool,
      *     description: string|null,
      *     usage: int,
-     *     hasDuplicatedName: null,
+     *     hasDuplicatedName: mixed,
      *     allergens: array<array-key, array<string, mixed>>,
      *     family: array<string, mixed>,
      * }

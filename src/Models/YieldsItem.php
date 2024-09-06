@@ -23,7 +23,7 @@ class YieldsItem extends AbstractModel
      *     ingredients: array{array-key, array{
      *         id: string,
      *         amount: int,
-     *          unit: string
+     *         unit: string
      *     }},
      *  }
      */

@@ -14,11 +14,9 @@ trait IndexRequestsTrait
     protected string $modelNamespace = 'NormanHuth\HellofreshScraper\Models\\';
 
     /**
-     * @phpstan-return  array<string, mixed>
-     *
      * @param  string  $uri
      * @param  int  $skip
-     * @return object<string, mixed>
+     * @return object
      *
      * @throws \Illuminate\Http\Client\ConnectionException
      * @throws \Illuminate\Http\Client\RequestException
@@ -42,7 +40,7 @@ trait IndexRequestsTrait
     }
 
     /**
-     * @phpstan-return  array<string, mixed>
+     * @phpstan-return object
      *
      * @return object{
      *     paginator: \NormanHuth\HellofreshScraper\Http\Paginator,
@@ -59,7 +57,7 @@ trait IndexRequestsTrait
     }
 
     /**
-     * @phpstan-return  array<string, mixed>
+     * @phpstan-return object
      *
      * @return object{
      *     paginator: \NormanHuth\HellofreshScraper\Http\Paginator,
@@ -76,7 +74,7 @@ trait IndexRequestsTrait
     }
 
     /**
-     * @phpstan-return  array<string, mixed>
+     * @phpstan-return object
      *
      * @return object{
      *     paginator: \NormanHuth\HellofreshScraper\Http\Paginator,
@@ -93,7 +91,7 @@ trait IndexRequestsTrait
     }
 
     /**
-     * @phpstan-return  array<string, mixed>
+     * @phpstan-return object
      *
      * @return object{
      *     paginator: \NormanHuth\HellofreshScraper\Http\Paginator,
@@ -110,6 +108,8 @@ trait IndexRequestsTrait
     }
 
     /**
+     * @phpstan-return object
+     *
      * @param  string  $id
      * @param  int  $take
      * @param  int  $skip

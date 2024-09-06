@@ -36,7 +36,7 @@ trait IndexRequestsTrait
             'paginator' => new Paginator($response),
             'items' => collect(array_map(
                 fn (array $item) => new $class($item),
-                $response
+                $response['items']
             )),
         ];
     }

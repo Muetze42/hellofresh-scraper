@@ -20,7 +20,7 @@ class Client
     /**
      * The HelloFresh base url.
      */
-    protected string $baseUrl = 'https://hellofresh.de';
+    protected string $baseUrl = 'https://gw.hellofresh.com';
 
     /**
      * The HelloFresh API path.

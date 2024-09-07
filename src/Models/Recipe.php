@@ -5,11 +5,13 @@ namespace NormanHuth\HelloFreshScraper\Models;
 use Illuminate\Support\Collection;
 use NormanHuth\HelloFreshScraper\Models\Concerns\HasAllergensTrait;
 use NormanHuth\HelloFreshScraper\Models\Concerns\HasPrimaryKeyTrait;
+use NormanHuth\HelloFreshScraper\Models\Concerns\HasTimestampsTrait;
 
 class Recipe extends AbstractModel
 {
     use HasAllergensTrait;
     use HasPrimaryKeyTrait;
+    use HasTimestampsTrait;
 
     /**
      * The attributes that should be cast.
@@ -84,6 +86,48 @@ class Recipe extends AbstractModel
         return parent::getAttributes();
     }
 
+    /**
+     * Get the total time in minutes.
+     */
+    public function totalTime(): ?int
+    {
+        return $this->toMinutes('totalTime');
+    }
+
+    /**
+     * Get the prep time in minutes.
+     */
+    public function prepTime(): ?int
+    {
+        return $this->toMinutes('prepTime');
+    }
+
+    /**
+     * Determine if this recipe is active.
+     */
+    public function active(): bool
+    {
+        return $this->toBool('active');
+    }
+
+    /**
+     * Determine if this recipe is an Addon.
+     */
+    public function isAddon(): bool
+    {
+        return $this->toBool('isAddon');
+    }
+
+    /**
+     * Determine if this recipe has an image to display.
+     */
+    public function hasImage(): bool
+    {
+        $value = $this->getAttribute('imagePath');
+
+        return ! empty($value) && is_string($value);
+    }
+
     public function category(): ?Category
     {
         return $this->hasOne('category');
@@ -152,47 +196,5 @@ class Recipe extends AbstractModel
             fn ($allergen) => new YieldsItem($allergen),
             $value
         ));
-    }
-
-    /**
-     * Get the total time in minutes.
-     */
-    public function totalTime(): ?int
-    {
-        return $this->toMinutes('totalTime');
-    }
-
-    /**
-     * Get the prep time in minutes.
-     */
-    public function prepTime(): ?int
-    {
-        return $this->toMinutes('prepTime');
-    }
-
-    /**
-     * Determine if this recipe is active.
-     */
-    public function active(): bool
-    {
-        return $this->bool('active');
-    }
-
-    /**
-     * Determine if this recipe is an Addon.
-     */
-    public function isAddon(): bool
-    {
-        return $this->bool('isAddon');
-    }
-
-    /**
-     * Determine if this recipe has an image to display.
-     */
-    public function hasImage(): bool
-    {
-        $value = $this->getAttribute('imagePath');
-
-        return ! empty($value) && is_string($value);
     }
 }

@@ -3,10 +3,12 @@
 namespace NormanHuth\HelloFreshScraper\Models;
 
 use NormanHuth\HelloFreshScraper\Models\Concerns\HasPrimaryKeyTrait;
+use NormanHuth\HelloFreshScraper\Models\Concerns\HasTimestampsTrait;
 
 class Family extends AbstractModel
 {
     use HasPrimaryKeyTrait;
+    use HasTimestampsTrait;
 
     /**
      * Get all the current attributes on the model.

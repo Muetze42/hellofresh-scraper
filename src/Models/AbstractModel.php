@@ -4,6 +4,7 @@ namespace NormanHuth\HelloFreshScraper\Models;
 
 use Carbon\CarbonInterval;
 use Illuminate\Database\Eloquent\Concerns\HasAttributes;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use NormanHuth\HelloFreshScraper\Models\Concerns\HasPrimaryKeyTrait;
@@ -57,11 +58,40 @@ class AbstractModel
         return (int) CarbonInterval::make($value)?->totalMinutes;
     }
 
-    protected function bool(string $attribute): bool
+    /**
+     * Get attribute cast as boolean.
+     *
+     * @param  string  $attribute
+     * @return bool
+     */
+    protected function toBool(string $attribute): bool
     {
         $value = $this->getAttribute($attribute);
 
         return is_bool($value) ? $value : false;
+    }
+
+    /**
+     * Get a parsed datetime attribute.
+     *
+     * @param  string  $attribute
+     * @return \Illuminate\Support\Carbon|null
+     */
+    protected function toDatetime(string $attribute): ?Carbon
+    {
+        $value = $this->getAttribute($attribute);
+
+        if (! is_string($value) || empty($value)) {
+            return null;
+        }
+
+        try {
+            $instance = Carbon::parse($value);
+
+            return $instance->year > 2000 ? $instance : null;
+        } catch (\Exception | \Throwable) {
+            return null;
+        }
     }
 
     /**

@@ -14,15 +14,13 @@ trait IndexRequestsTrait
     protected string $modelNamespace = 'NormanHuth\HelloFreshScraper\Models\\';
 
     /**
-     * @param  string  $uri
-     * @param  int  $skip
-     * @return object
+     * @return array<string, mixed>
      *
      * @throws \Illuminate\Http\Client\ConnectionException
      * @throws \Illuminate\Http\Client\RequestException
      * @throws \NormanHuth\HelloFreshScraper\Exceptions\ClientException
      */
-    protected function indexRequest(string $uri, int $skip = 0): object
+    protected function indexRequest(string $uri, int $skip = 0): array
     {
         $response = $this->request($uri, [
             'skip' => $skip,
@@ -30,9 +28,9 @@ trait IndexRequestsTrait
 
         $class = $this->modelNamespace . ucfirst(Str::singular($uri));
 
-        return (object) [
+        return [
             'paginator' => new Paginator($response),
-            'items' => collect(array_map(
+            'items' => (array_map(
                 fn (array $item) => new $class($item),
                 $response['items']
             )),
@@ -40,98 +38,95 @@ trait IndexRequestsTrait
     }
 
     /**
-     * @phpstan-return object
+     * @phpstan-return array<string, mixed>
      *
-     * @return object{
+     * @return array{
      *     paginator: \NormanHuth\HelloFreshScraper\Http\Paginator,
-     *     items: \Illuminate\Support\Collection<array-key, \NormanHuth\HelloFreshScraper\Models\Allergen>
+     *     items: array<array-key, \NormanHuth\HelloFreshScraper\Models\Allergen>
      * }
      *
      * @throws \Illuminate\Http\Client\ConnectionException
      * @throws \Illuminate\Http\Client\RequestException
      * @throws \NormanHuth\HelloFreshScraper\Exceptions\ClientException
      */
-    public function allergens(int $skip = 0): object
+    public function allergens(int $skip = 0): array
     {
         return $this->indexRequest('allergens', $skip);
     }
 
     /**
-     * @phpstan-return object
+     * @phpstan-return array<string, mixed>
      *
-     * @return object{
+     * @return array{
      *     paginator: \NormanHuth\HelloFreshScraper\Http\Paginator,
-     *     items: \Illuminate\Support\Collection<array-key, \NormanHuth\HelloFreshScraper\Models\Cuisine>
+     *     items: array<array-key, \NormanHuth\HelloFreshScraper\Models\Cuisine>
      * }
      *
      * @throws \Illuminate\Http\Client\ConnectionException
      * @throws \Illuminate\Http\Client\RequestException
      * @throws \NormanHuth\HelloFreshScraper\Exceptions\ClientException
      */
-    public function cuisines(int $skip = 0): object
+    public function cuisines(int $skip = 0): array
     {
         return $this->indexRequest('cuisines', $skip);
     }
 
     /**
-     * @phpstan-return object
+     * @phpstan-return array<string, mixed>
      *
-     * @return object{
+     * @return array{
      *     paginator: \NormanHuth\HelloFreshScraper\Http\Paginator,
-     *     items: \Illuminate\Support\Collection<array-key, \NormanHuth\HelloFreshScraper\Models\Ingredient>
+     *     items: array<array-key, \NormanHuth\HelloFreshScraper\Models\Ingredient>
      * }
      *
      * @throws \Illuminate\Http\Client\ConnectionException
      * @throws \Illuminate\Http\Client\RequestException
      * @throws \NormanHuth\HelloFreshScraper\Exceptions\ClientException
      */
-    public function ingredients(int $skip = 0): object
+    public function ingredients(int $skip = 0): array
     {
         return $this->indexRequest('ingredients', $skip);
     }
 
     /**
-     * @phpstan-return object
+     * @phpstan-return array<string, mixed>
      *
-     * @return object{
+     * @return array{
      *     paginator: \NormanHuth\HelloFreshScraper\Http\Paginator,
-     *     items: \Illuminate\Support\Collection<array-key, \NormanHuth\HelloFreshScraper\Models\Recipe>
+     *     items: array<array-key, \NormanHuth\HelloFreshScraper\Models\Recipe>
      * }
      *
      * @throws \Illuminate\Http\Client\ConnectionException
      * @throws \Illuminate\Http\Client\RequestException
      * @throws \NormanHuth\HelloFreshScraper\Exceptions\ClientException
      */
-    public function recipes(int $skip = 0): object
+    public function recipes(int $skip = 0): array
     {
         return $this->indexRequest('recipes', $skip);
     }
 
     /**
-     * @phpstan-return object
+     * @phpstan-return array<string, mixed>
      *
-     * @param  string  $id
-     * @param  int  $take
-     * @param  int  $skip
-     * @return object{
+     * @return array{
      *      paginator: \NormanHuth\HelloFreshScraper\Http\Paginator,
-     *      items: \Illuminate\Support\Collection<array-key, \NormanHuth\HelloFreshScraper\Models\Recipe>
+     *      items: array<array-key, \NormanHuth\HelloFreshScraper\Models\Recipe>
      *  }
      *
      * @throws \Illuminate\Http\Client\ConnectionException
      * @throws \Illuminate\Http\Client\RequestException
      * @throws \NormanHuth\HelloFreshScraper\Exceptions\ClientException
      */
-    public function recipeRecommendations(string $id, int $take = 10, int $skip = 0): object
+    public function recipeRecommendations(string $id, int $take = 10, int $skip = 0): array
     {
         $response = $this->request('recipes/' . $id . '/recommendations', [
             'skip' => $skip,
             'take' => $take,
         ]);
 
-        return (object) [
+        return [
             'paginator' => new Paginator($response),
-            'items' => collect(array_map(
+            'items' => (array_map(
                 fn (array $item) => new Recipe($item),
                 $response
             )),

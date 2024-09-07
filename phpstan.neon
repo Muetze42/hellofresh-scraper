@@ -7,16 +7,19 @@ parameters:
       - '8.8.8.8'
   paths:
     - src/
-  reportUnmatchedIgnoredErrors: false
+#  reportUnmatchedIgnoredErrors: false
 
   level: 9
 
   ignoreErrors:
     -
+      message: '#Method NormanHuth\\HelloFreshScraper\\Http\\Client\:\:indexRequest\(\) has no return type specified\.#'
+      path: src/Http/Concerns/IndexRequestsTrait.php
+    -
       identifier: return.type
       paths:
         - src/Models/Concerns/HasPrimaryKeyTrait.php
-        - src/Models/AbstractModel.php
+#        - src/Models/AbstractModel.php
     -
       identifier: missingType.return
       path: src/Models/AbstractModel.php

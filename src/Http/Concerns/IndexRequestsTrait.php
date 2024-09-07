@@ -14,13 +14,12 @@ trait IndexRequestsTrait
     protected string $modelNamespace = 'NormanHuth\HelloFreshScraper\Models\\';
 
     /**
-     * @return array<string, mixed>
-     *
      * @throws \Illuminate\Http\Client\ConnectionException
      * @throws \Illuminate\Http\Client\RequestException
      * @throws \NormanHuth\HelloFreshScraper\Exceptions\ClientException
+     * @noinspection PhpMissingReturnTypeInspection
      */
-    protected function indexRequest(string $uri, int $skip = 0): array
+    protected function indexRequest(string $uri, int $skip = 0)
     {
         $response = $this->request($uri, [
             'skip' => $skip,
@@ -38,8 +37,6 @@ trait IndexRequestsTrait
     }
 
     /**
-     * @phpstan-return array<string, mixed>
-     *
      * @return array{
      *     paginator: \NormanHuth\HelloFreshScraper\Http\Paginator,
      *     items: array<array-key, \NormanHuth\HelloFreshScraper\Models\Allergen>
@@ -55,8 +52,6 @@ trait IndexRequestsTrait
     }
 
     /**
-     * @phpstan-return array<string, mixed>
-     *
      * @return array{
      *     paginator: \NormanHuth\HelloFreshScraper\Http\Paginator,
      *     items: array<array-key, \NormanHuth\HelloFreshScraper\Models\Cuisine>
@@ -72,8 +67,6 @@ trait IndexRequestsTrait
     }
 
     /**
-     * @phpstan-return array<string, mixed>
-     *
      * @return array{
      *     paginator: \NormanHuth\HelloFreshScraper\Http\Paginator,
      *     items: array<array-key, \NormanHuth\HelloFreshScraper\Models\Ingredient>
@@ -89,11 +82,9 @@ trait IndexRequestsTrait
     }
 
     /**
-     * @phpstan-return array<string, mixed>
-     *
      * @return array{
      *     paginator: \NormanHuth\HelloFreshScraper\Http\Paginator,
-     *     items: array<array-key, \NormanHuth\HelloFreshScraper\Models\Recipe>
+     *     items: list<\NormanHuth\HelloFreshScraper\Models\Recipe>
      * }
      *
      * @throws \Illuminate\Http\Client\ConnectionException
@@ -106,8 +97,6 @@ trait IndexRequestsTrait
     }
 
     /**
-     * @phpstan-return array<string, mixed>
-     *
      * @return array{
      *      paginator: \NormanHuth\HelloFreshScraper\Http\Paginator,
      *      items: array<array-key, \NormanHuth\HelloFreshScraper\Models\Recipe>

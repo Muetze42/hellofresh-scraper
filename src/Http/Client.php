@@ -55,7 +55,7 @@ class Client
     /**
      * Create a new client instance.
      */
-    public function __construct(string $country = 'DE', string $locale = 'de', int $take = 50)
+    public function __construct(string $country = 'DE', string $locale = 'de-DE', int $take = 50)
     {
         $this->country = $country;
         $this->locale = $locale;
@@ -87,7 +87,7 @@ class Client
 
         $query = array_merge([
             'country' => $this->country,
-            'locale' => $this->locale . '-' . $this->country,
+            'locale' => $this->locale,
             'take' => $this->take,
         ], $query);
 

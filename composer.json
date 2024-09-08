@@ -45,5 +45,21 @@
                 "NormanHuth\\HelloFreshScraper\\Providers\\PackageServiceProvider"
             ]
         }
+    },
+    "scripts": {
+        "pint": "./vendor/bin/pint --ansi",
+        "stan": "./vendor/bin/phpstan analyse --memory-limit 1G --ansi",
+        "checks": [
+            "@pint",
+            "@stan"
+        ]
+    },
+    "scripts-descriptions": {
+        "pint": "Fix code style issues",
+        "stan": "Run static analysis to find bugs",
+        "checks": "Running all analysis and fixer tools"
+    },
+    "scripts-aliases": {
+        "checks": ["c"]
     }
 }

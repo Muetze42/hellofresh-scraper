@@ -17,6 +17,7 @@ trait IndexRequestsTrait
      * @throws \Illuminate\Http\Client\ConnectionException
      * @throws \Illuminate\Http\Client\RequestException
      * @throws \NormanHuth\HelloFreshScraper\Exceptions\ClientException
+     *
      * @noinspection PhpMissingReturnTypeInspection
      */
     protected function indexRequest(string $uri, int $skip = 0)

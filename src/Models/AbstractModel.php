@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Concerns\HasAttributes;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use NormanHuth\HelloFreshScraper\Exceptions\MissingAttributeException;
 use NormanHuth\HelloFreshScraper\Models\Concerns\HasPrimaryKeyTrait;
 
 class AbstractModel
@@ -17,6 +18,11 @@ class AbstractModel
      * The primary key for the model.
      */
     protected string $primaryKey = 'id';
+
+    /**
+     * Indicates that an error should be thrown if you want to access a non-existent attribute.
+     */
+    protected bool $throwMissingAttributeException = true;
 
     /**
      * @param  array<string, mixed>  $attributes
@@ -37,10 +43,27 @@ class AbstractModel
     }
 
     /**
+     * Determine that an error should be thrown if you want to access a non-existent attribute.
+     *
+     * @param  bool  $state
+     * @return $this
+     */
+    public function throwMissingAttributeException(bool $state): static
+    {
+        $this->throwMissingAttributeException = $state;
+
+        return $this;
+    }
+
+    /**
      * Get an attribute from the model.
      */
     public function getAttribute(string $key): mixed
     {
+        if ($this->throwMissingAttributeException && ! array_key_exists($key, $this->attributes)) {
+            throw new MissingAttributeException($this, $key);
+        }
+
         return data_get($this->attributes, $key);
     }
 

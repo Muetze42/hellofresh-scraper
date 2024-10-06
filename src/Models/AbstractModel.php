@@ -9,8 +9,9 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use NormanHuth\HelloFreshScraper\Exceptions\MissingAttributeException;
 use NormanHuth\HelloFreshScraper\Models\Concerns\HasPrimaryKeyTrait;
+use ValueError;
 
-class AbstractModel
+abstract class AbstractModel
 {
     use HasAttributes;
 
@@ -45,7 +46,6 @@ class AbstractModel
     /**
      * Determine that an error should be thrown if you want to access a non-existent attribute.
      *
-     * @param  bool  $state
      * @return $this
      */
     public function throwMissingAttributeException(bool $state): static
@@ -83,9 +83,6 @@ class AbstractModel
 
     /**
      * Get attribute cast as boolean.
-     *
-     * @param  string  $attribute
-     * @return bool
      */
     protected function toBool(string $attribute): bool
     {
@@ -95,10 +92,31 @@ class AbstractModel
     }
 
     /**
+     * Get attribute cast as string.
+     */
+    protected function toString(string $attribute): string
+    {
+        $value = $this->getAttribute($attribute);
+
+        if (is_string($value)) {
+            return $value;
+        }
+
+        if (is_object($value) && method_exists($value, '__toString')) {
+            return (string) $value;
+        }
+
+        if (is_object($value) && method_exists($value, 'toString')) {
+            return (string) $value->toString();
+        }
+
+        throw new ValueError(
+            sprintf('Value [%s] is not of the expected type sting.', var_export($value, true))
+        );
+    }
+
+    /**
      * Get a parsed datetime attribute.
-     *
-     * @param  string  $attribute
-     * @return \Illuminate\Support\Carbon|null
      */
     protected function toDatetime(string $attribute): ?Carbon
     {
@@ -155,7 +173,7 @@ class AbstractModel
         $class = __NAMESPACE__ . '\\' . Str::singular(ucfirst($attribute));
 
         return collect(array_map(
-            fn ($allergen) => new $class($allergen),
+            fn ($classString) => new $class($classString),
             $value
         ));
     }

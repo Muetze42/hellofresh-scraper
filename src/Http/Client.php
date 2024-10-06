@@ -121,7 +121,7 @@ class Client
      */
     protected function getSsrPayload(string $key): mixed
     {
-        $response = Http::get($this->baseUrl);
+        $response = Http::get(str_replace('gw.', '', $this->baseUrl));
         $dom = new DOMDocument();
         libxml_use_internal_errors(true);
         $dom->loadHTML($response->body());

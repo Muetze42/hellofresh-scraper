@@ -2,11 +2,13 @@
 
 namespace NormanHuth\HelloFreshScraper\Models;
 
+use NormanHuth\HelloFreshScraper\Models\Concerns\HasNameTrait;
 use NormanHuth\HelloFreshScraper\Models\Concerns\HasPrimaryKeyTrait;
 
 class Utensil extends AbstractModel
 {
     use HasPrimaryKeyTrait;
+    use HasNameTrait;
 
     /**
      * Get all the current attributes on the model.

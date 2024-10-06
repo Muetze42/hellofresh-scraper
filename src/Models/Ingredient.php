@@ -4,12 +4,14 @@ namespace NormanHuth\HelloFreshScraper\Models;
 
 use Illuminate\Support\Collection;
 use NormanHuth\HelloFreshScraper\Models\Concerns\HasAllergensTrait;
+use NormanHuth\HelloFreshScraper\Models\Concerns\HasNameTrait;
 use NormanHuth\HelloFreshScraper\Models\Concerns\HasPrimaryKeyTrait;
 
 class Ingredient extends AbstractModel
 {
-    use HasPrimaryKeyTrait;
     use HasAllergensTrait;
+    use HasNameTrait;
+    use HasPrimaryKeyTrait;
 
     /**
      * The attributes that should be cast.
@@ -49,9 +51,6 @@ class Ingredient extends AbstractModel
         return parent::getAttributes();
     }
 
-    /**
-     * @return \NormanHuth\HelloFreshScraper\Models\Family|null
-     */
     public function family(): ?Family
     {
         return $this->hasOne('family');

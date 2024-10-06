@@ -41,4 +41,12 @@ class Label extends AbstractModel
     {
         return parent::getAttributes();
     }
+
+    /**
+     * Determine if this label should display.
+     */
+    public function displayLabel(): bool
+    {
+        return $this->toBool('displayLabel');
+    }
 }

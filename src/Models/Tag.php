@@ -2,11 +2,13 @@
 
 namespace NormanHuth\HelloFreshScraper\Models;
 
+use NormanHuth\HelloFreshScraper\Models\Concerns\HasNameTrait;
 use NormanHuth\HelloFreshScraper\Models\Concerns\HasPrimaryKeyTrait;
 
 class Tag extends AbstractModel
 {
     use HasPrimaryKeyTrait;
+    use HasNameTrait;
 
     /**
      * The attributes that should be cast.
@@ -35,5 +37,13 @@ class Tag extends AbstractModel
     public function getAttributes(): array
     {
         return parent::getAttributes();
+    }
+
+    /**
+     * Determine if this recipe is active.
+     */
+    public function active(): bool
+    {
+        return $this->toBool('displayLabel');
     }
 }

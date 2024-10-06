@@ -4,6 +4,7 @@ namespace NormanHuth\HelloFreshScraper\Models;
 
 use Illuminate\Support\Collection;
 use NormanHuth\HelloFreshScraper\Models\Concerns\HasAllergensTrait;
+use NormanHuth\HelloFreshScraper\Models\Concerns\HasNameTrait;
 use NormanHuth\HelloFreshScraper\Models\Concerns\HasPrimaryKeyTrait;
 use NormanHuth\HelloFreshScraper\Models\Concerns\HasTimestampsTrait;
 
@@ -12,6 +13,7 @@ class Recipe extends AbstractModel
     use HasAllergensTrait;
     use HasPrimaryKeyTrait;
     use HasTimestampsTrait;
+    use HasNameTrait;
 
     /**
      * The attributes that should be cast.

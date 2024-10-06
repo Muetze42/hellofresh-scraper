@@ -2,11 +2,13 @@
 
 namespace NormanHuth\HelloFreshScraper\Models;
 
+use NormanHuth\HelloFreshScraper\Models\Concerns\HasNameTrait;
 use NormanHuth\HelloFreshScraper\Models\Concerns\HasPrimaryKeyTrait;
 
 class Allergen extends AbstractModel
 {
     use HasPrimaryKeyTrait;
+    use HasNameTrait;
 
     /**
      * The attributes that should be cast.
